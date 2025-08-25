@@ -1,7 +1,17 @@
 resource "iosxr_banner" "banner" {
-  for_each = { for device in local.devices : device.name => device if try(local.device_config[device.name].banner, null) != null || try(local.defaults.iosxr.configuration.banner, null) != null }
-  device   = each.value.name
+  for_each = {
+    for banner in flatten([
+      for device in local.devices : [
+        for banner_config in try(local.device_config[device.name].banner, try(local.defaults.iosxr.configuration.banner, [])) : {
+          device      = device.name
+          banner_type = banner_config.banner_type
+          line        = banner_config.line
+        }
+      ]
+    ]) : "${banner.device}_${banner.banner_type}" => banner
+  }
+  device = each.value.device
 
-  banner_type = try(local.device_config[each.value.name].banner.banner_type, local.defaults.iosxr.configuration.banner.banner_type, null)
-  line        = try(local.device_config[each.value.name].banner.line, local.defaults.iosxr.configuration.banner.line, null)
+  banner_type = each.value.banner_type
+  line        = each.value.line
 }
