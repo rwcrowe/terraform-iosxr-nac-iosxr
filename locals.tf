@@ -25,6 +25,16 @@ locals {
     "36" = "af42", "38" = "af43", "40" = "cs5",
     "46" = "ef", "48" = "cs6", "56" = "cs7"
   }
+  # Separate map for ACL precedence values to avoid conflicts with QoS precedence values
+  acl_precedence_map = {
+    "0"              = "Routine", "1" = "Priority", "2" = "Immediate",
+    "3"              = "Flash", "4" = "FlashOverride", "5" = "Critical",
+    "6"              = "Internet", "7" = "Network",
+    "routine"        = "Routine", "priority" = "Priority",
+    "immediate"      = "Immediate", "flash" = "Flash",
+    "flash-override" = "FlashOverride", "critical" = "Critical",
+    "internet"       = "Internet", "network" = "Network"
+  }
   # IPv4/IPv6 ACL mappings
   acl_l4port_map = {
     # TCP ports: numeric -> YANG
@@ -68,16 +78,6 @@ locals {
     "netbios-ns" = "NetBIOS_NS", "netbios-ss" = "NetBIOS_SS",
     "ntp"        = "NTP", "rip" = "RIP", "snmptrap" = "SNMPTrap",
     "tftp"       = "TFTP", "xdmcp" = "XDMCP"
-  }
-  # Separate map for ACL precedence values to avoid conflicts with QoS precedence values
-  acl_precedence_map = {
-    "0"              = "Routine", "1" = "Priority", "2" = "Immediate",
-    "3"              = "Flash", "4" = "FlashOverride", "5" = "Critical",
-    "6"              = "Internet", "7" = "Network",
-    "routine"        = "Routine", "priority" = "Priority",
-    "immediate"      = "Immediate", "flash" = "Flash",
-    "flash-override" = "FlashOverride", "critical" = "Critical",
-    "internet"       = "Internet", "network" = "Network"
   }
   acl_protocol_map = {
     "1"   = "icmp", "2" = "igmp", "4" = "ipinip", "6" = "tcp",
