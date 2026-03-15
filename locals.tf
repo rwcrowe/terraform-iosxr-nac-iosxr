@@ -14,4 +14,19 @@ locals {
     "4" = "flash-override", "5" = "critical",
     "6" = "internet", "7" = "network"
   }
+  # iosxr_segment_routing_te: maps flex-algo metric type names to YANG uint32 values
+  flex_algo_metric_type_map = {
+    "igp"       = "0"
+    "latency"   = "1"
+    "te"        = "2"
+    "bandwidth" = "3"
+  }
+  # iosxr_segment_routing_te: maps SRv6 SID format CLI names to YANG enum values
+  srv6_sid_format_map = {
+    "usid-f3216" = "micro-sid"
+  }
+  # iosxr_segment_routing_te: maps effective-metric type YAML names to YANG enum values
+  metric_type_map = {
+    "unknown" = "default"
+  }
 }
