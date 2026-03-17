@@ -91,7 +91,7 @@ locals {
         for format in local.device_config[device.name].segment_routing.srv6.formats : {
           name                                         = try(format.name, local.defaults.iosxr.devices.configuration.segment_routing.srv6.formats.name, null)
           usid_local_id_block_ranges_lib_start         = try(format.usid_local_id_block_explicit_from, local.defaults.iosxr.devices.configuration.segment_routing.srv6.formats.usid_local_id_block_explicit_from, null)
-          usid_local_id_block_ranges_explict_lib_start = try(format.usid_local_id_block_explict_to, local.defaults.iosxr.devices.configuration.segment_routing.srv6.formats.usid_local_id_block_explict_to, null)
+          usid_local_id_block_ranges_explict_lib_start = try(format.usid_local_id_block_explicit_to, local.defaults.iosxr.devices.configuration.segment_routing.srv6.formats.usid_local_id_block_explicit_to, null)
           usid_wide_local_id_block_explicit_range      = try(format.usid_wide_local_id_block_start, local.defaults.iosxr.devices.configuration.segment_routing.srv6.formats.usid_wide_local_id_block_start, null)
         }
       ]
@@ -251,30 +251,30 @@ locals {
           }
         ]
         pce_peers_ipv4 = try(length([
-          for peer in try(local.device_config[device.name].segment_routing.traffic_engineering.pcc.pce_peers, []) :
-          peer if can(regex(":", try(peer.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.address, ""))) == false
+          for peer in try(local.device_config[device.name].segment_routing.traffic_engineering.pcc.pces, []) :
+          peer if can(regex(":", try(peer.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.address, ""))) == false
           ]) == 0, true) ? null : [
-          for peer in try(local.device_config[device.name].segment_routing.traffic_engineering.pcc.pce_peers, []) : {
-            pce_address                = try(peer.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.address, null)
-            password_encrypted         = try(peer.password, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.password, null)
-            pce_group                  = try(peer.pce_group, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.pce_group, null)
-            precedence                 = try(peer.precedence, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.precedence, null)
-            tcp_ao_include_tcp_options = try(peer.tcp_ao_include_tcp_options, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.tcp_ao_include_tcp_options, null)
-            tcp_ao_keychain            = try(peer.tcp_ao_keychain, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.tcp_ao_keychain, null)
-          } if can(regex(":", try(peer.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.address, ""))) == false
+          for peer in try(local.device_config[device.name].segment_routing.traffic_engineering.pcc.pces, []) : {
+            pce_address                = try(peer.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.address, null)
+            password_encrypted         = try(peer.password, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.password, null)
+            pce_group                  = try(peer.pce_group, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.pce_group, null)
+            precedence                 = try(peer.precedence, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.precedence, null)
+            tcp_ao_include_tcp_options = try(peer.tcp_ao_include_tcp_options, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.tcp_ao_include_tcp_options, null)
+            tcp_ao_keychain            = try(peer.tcp_ao_keychain, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.tcp_ao_keychain, null)
+          } if can(regex(":", try(peer.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.address, ""))) == false
         ]
         pce_peers_ipv6 = try(length([
-          for peer in try(local.device_config[device.name].segment_routing.traffic_engineering.pcc.pce_peers, []) :
-          peer if can(regex(":", try(peer.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.address, ""))) == true
+          for peer in try(local.device_config[device.name].segment_routing.traffic_engineering.pcc.pces, []) :
+          peer if can(regex(":", try(peer.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.address, ""))) == true
           ]) == 0, true) ? null : [
-          for peer in try(local.device_config[device.name].segment_routing.traffic_engineering.pcc.pce_peers, []) : {
-            pce_address                = try(peer.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.address, null)
-            password_encrypted         = try(peer.password, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.password, null)
-            pce_group                  = try(peer.pce_group, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.pce_group, null)
-            precedence                 = try(peer.precedence, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.precedence, null)
-            tcp_ao_include_tcp_options = try(peer.tcp_ao_include_tcp_options, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.tcp_ao_include_tcp_options, null)
-            tcp_ao_keychain            = try(peer.tcp_ao_keychain, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.tcp_ao_keychain, null)
-          } if can(regex(":", try(peer.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pce_peers.address, ""))) == true
+          for peer in try(local.device_config[device.name].segment_routing.traffic_engineering.pcc.pces, []) : {
+            pce_address                = try(peer.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.address, null)
+            password_encrypted         = try(peer.password, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.password, null)
+            pce_group                  = try(peer.pce_group, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.pce_group, null)
+            precedence                 = try(peer.precedence, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.precedence, null)
+            tcp_ao_include_tcp_options = try(peer.tcp_ao_include_tcp_options, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.tcp_ao_include_tcp_options, null)
+            tcp_ao_keychain            = try(peer.tcp_ao_keychain, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.tcp_ao_keychain, null)
+          } if can(regex(":", try(peer.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.pcc.pces.address, ""))) == true
         ]
         resource_lists = try(length(local.device_config[device.name].segment_routing.traffic_engineering.resource_lists) == 0, true) ? null : [
           for rl in local.device_config[device.name].segment_routing.traffic_engineering.resource_lists : {
@@ -392,5 +392,325 @@ resource "iosxr_segment_routing_te" "segment_routing_te" {
     iosxr_segment_routing.segment_routing,
     iosxr_segment_routing_v6.segment_routing_v6,
     iosxr_key_chain.key_chain
+  ]
+}
+
+##### Segment Routing TE On Demand Color #####
+
+locals {
+  segment_routing_te_on_demand_color = flatten([
+    for device in local.devices : [
+      for on_demand in try(local.device_config[device.name].segment_routing.traffic_engineering.on_demand, []) : {
+        key                                    = format("%s/%s", device.name, on_demand.color)
+        device_name                            = device.name
+        color                                  = try(on_demand.color, null)
+        bandwidth                              = try(on_demand.bandwidth, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.bandwidth, null)
+        maximum_sid_depth                      = try(on_demand.maximum_sid_depth, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.maximum_sid_depth, null)
+        max_install_standby_paths              = try(on_demand.max_install_standby_paths, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.max_install_standby_paths, null)
+        pce_group                              = try(on_demand.pce_group, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.pce_group, null)
+        source_address                         = try(on_demand.source_address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.source_address, null)
+        source_address_type                    = try(on_demand.source_address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.source_address, null) != null ? (can(regex(":", try(on_demand.source_address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.source_address, ""))) ? "end-point-type-ipv6" : "end-point-type-ipv4") : null
+        dynamic_anycast_sid_inclusion          = try(on_demand.dynamic.anycast_sid_inclusion, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.anycast_sid_inclusion, null)
+        dynamic_metric_type                    = try(on_demand.dynamic.metric_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.metric_type, null)
+        dynamic_metric_margin_type             = try(on_demand.dynamic.metric_margin_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.metric_margin_type, null)
+        dynamic_metric_margin_absolute         = try(on_demand.dynamic.metric_margin_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.metric_margin_type, null) == "absolute" ? try(on_demand.dynamic.metric_margin, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.metric_margin, null) : null
+        dynamic_metric_margin_relative         = try(on_demand.dynamic.metric_margin_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.metric_margin_type, null) == "relative" ? try(on_demand.dynamic.metric_margin, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.metric_margin, null) : null
+        dynamic_pcep                           = try(on_demand.dynamic.pcep, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.pcep, null)
+        dynamic_disjoint_path_group_id         = try(on_demand.dynamic.disjoint_path.group_id, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.disjoint_path.group_id, null)
+        dynamic_disjoint_path_type             = try(on_demand.dynamic.disjoint_path.type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.disjoint_path.type, null)
+        dynamic_disjoint_path_sub_id           = try(on_demand.dynamic.disjoint_path.sub_id, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.disjoint_path.sub_id, null)
+        dynamic_disjoint_path_shortest_path    = try(on_demand.dynamic.disjoint_path.shortest_path, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.disjoint_path.shortest_path, null)
+        dynamic_disjoint_path_fallback_disable = try(on_demand.dynamic.disjoint_path.fallback_disable, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.disjoint_path.fallback_disable, null)
+        dynamic_affinity_rules = try(length(on_demand.dynamic.affinities) == 0, true) ? null : [
+          for aff in on_demand.dynamic.affinities : {
+            affinity_type = format("affinity-%s", try(aff.type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.affinities.type, null))
+            affinities = try(length(aff.entries) == 0, true) ? null : [
+              for entry in aff.entries : {
+                affinity_name = try(entry.name, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.affinities.entries.name, null)
+              }
+            ]
+          }
+        ]
+        dynamic_bounds = try(length(on_demand.dynamic.bounds) == 0, true) ? null : [
+          for bound in on_demand.dynamic.bounds : {
+            type        = format("bound-scope-%s", try(bound.scope, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.bounds.scope, null))
+            metric_type = try(bound.type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.bounds.type, null)
+            value       = try(bound.metric, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.dynamic.bounds.metric, null)
+          }
+        ]
+        constraint_segments_protection_type = try(on_demand.constraints.segments.protection_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.constraints.segments.protection_type, null)
+        constraint_segments_sid_algorithm   = try(on_demand.constraints.segments.sid_algorithm, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.constraints.segments.sid_algorithm, null)
+        effective_metric_type               = try(on_demand.effective_metric.type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.effective_metric.type, null)
+        effective_metric_value              = try(on_demand.effective_metric.value, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.effective_metric.value, null)
+        bfd_enable                          = try(on_demand.bfd.enable, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.bfd.enable, null)
+        bfd_disable                         = null
+        bfd_multiplier                      = try(on_demand.bfd.multiplier, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.bfd.multiplier, null)
+        bfd_minimum_interval                = try(on_demand.bfd.minimum_interval, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.bfd.minimum_interval, null)
+        bfd_invalidation_action             = try(on_demand.bfd.invalidation_action, null) != null ? format("invalid-ation-action-%s", on_demand.bfd.invalidation_action) : try(local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.bfd.invalidation_action, null) != null ? format("invalid-ation-action-%s", local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.bfd.invalidation_action) : null
+        bfd_reverse_path_binding_label      = try(on_demand.bfd.reverse_path_binding_label, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.bfd.reverse_path_binding_label, null)
+        bfd_logging_session_state_change    = try(on_demand.bfd.logging_session_state_change, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.bfd.logging_session_state_change, null)
+        steering_labeled_services_disable   = try(on_demand.steering.labeled_services.disable, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.steering.labeled_services.disable, null)
+        steering_invalidation_drop          = try(on_demand.steering.invalidation_drop, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.steering.invalidation_drop, null)
+        per_flow                            = try(on_demand.per_flow.enable, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.per_flow.enable, try(on_demand.per_flow, null) != null ? true : null)
+        per_flow_forward_class_default      = try(on_demand.per_flow.default_class, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.per_flow.default_class, null)
+        per_flow_forward_classes = try(length(on_demand.per_flow.forward_classes) == 0, true) ? null : [
+          for fc in on_demand.per_flow.forward_classes : {
+            forward_class = try(fc.id, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.per_flow.forward_classes.id, null)
+            color         = try(fc.color, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.per_flow.forward_classes.color, null)
+          }
+        ]
+        performance_measurement_delay_profile                         = try(on_demand.performance_measurement.delay.profile, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.performance_measurement.delay.profile, null)
+        performance_measurement_delay_logging_delay_exceeded          = try(on_demand.performance_measurement.delay.logging_delay_exceeded, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.performance_measurement.delay.logging_delay_exceeded, null)
+        performance_measurement_liveness_profile                      = try(on_demand.performance_measurement.liveness.profile, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.performance_measurement.liveness.profile, null)
+        performance_measurement_liveness_backup_profile               = try(on_demand.performance_measurement.liveness.backup_profile, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.performance_measurement.liveness.backup_profile, null)
+        performance_measurement_liveness_logging_session_state_change = try(on_demand.performance_measurement.liveness.logging_session_state_change, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.performance_measurement.liveness.logging_session_state_change, null)
+        performance_measurement_liveness_invalidation_action          = try(on_demand.performance_measurement.liveness.invalidation_action, null) != null ? format("invalid-ation-action-%s", on_demand.performance_measurement.liveness.invalidation_action) : try(local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.performance_measurement.liveness.invalidation_action, null) != null ? format("invalid-ation-action-%s", local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.performance_measurement.liveness.invalidation_action) : null
+        performance_measurement_reverse_path_segment_list             = try(on_demand.performance_measurement.reverse_path_segment_list, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.performance_measurement.reverse_path_segment_list, null)
+        performance_measurement_reverse_path_label                    = try(on_demand.performance_measurement.reverse_path_label, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.performance_measurement.reverse_path_label, null)
+        srv6_locator_name                                             = try(on_demand.srv6.locator, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.srv6.locator, null)
+        srv6_locator_binding_sid_type                                 = try(on_demand.srv6.locator, null) != null ? "srv6-dynamic" : null
+        srv6_locator_behavior                                         = try(on_demand.srv6.behavior, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.on_demand.srv6.behavior, null)
+      }
+    ] if try(local.device_config[device.name].segment_routing.traffic_engineering.on_demand, null) != null
+  ])
+}
+
+resource "iosxr_segment_routing_te_on_demand_color" "segment_routing_te_on_demand_color" {
+  for_each                                                      = { for odn in local.segment_routing_te_on_demand_color : odn.key => odn }
+  device                                                        = each.value.device_name
+  color                                                         = each.value.color
+  bandwidth                                                     = each.value.bandwidth
+  bfd_disable                                                   = each.value.bfd_disable
+  bfd_enable                                                    = each.value.bfd_enable
+  bfd_invalidation_action                                       = each.value.bfd_invalidation_action
+  bfd_logging_session_state_change                              = each.value.bfd_logging_session_state_change
+  bfd_minimum_interval                                          = each.value.bfd_minimum_interval
+  bfd_multiplier                                                = each.value.bfd_multiplier
+  bfd_reverse_path_binding_label                                = each.value.bfd_reverse_path_binding_label
+  constraint_segments_protection_type                           = each.value.constraint_segments_protection_type
+  constraint_segments_sid_algorithm                             = each.value.constraint_segments_sid_algorithm
+  dynamic_affinity_rules                                        = each.value.dynamic_affinity_rules
+  dynamic_anycast_sid_inclusion                                 = each.value.dynamic_anycast_sid_inclusion
+  dynamic_bounds                                                = each.value.dynamic_bounds
+  dynamic_disjoint_path_fallback_disable                        = each.value.dynamic_disjoint_path_fallback_disable
+  dynamic_disjoint_path_group_id                                = each.value.dynamic_disjoint_path_group_id
+  dynamic_disjoint_path_shortest_path                           = each.value.dynamic_disjoint_path_shortest_path
+  dynamic_disjoint_path_sub_id                                  = each.value.dynamic_disjoint_path_sub_id
+  dynamic_disjoint_path_type                                    = each.value.dynamic_disjoint_path_type
+  dynamic_metric_margin_absolute                                = each.value.dynamic_metric_margin_absolute
+  dynamic_metric_margin_relative                                = each.value.dynamic_metric_margin_relative
+  dynamic_metric_margin_type                                    = each.value.dynamic_metric_margin_type
+  dynamic_metric_type                                           = each.value.dynamic_metric_type
+  dynamic_pcep                                                  = each.value.dynamic_pcep
+  effective_metric_type                                         = each.value.effective_metric_type
+  effective_metric_value                                        = each.value.effective_metric_value
+  max_install_standby_paths                                     = each.value.max_install_standby_paths
+  maximum_sid_depth                                             = each.value.maximum_sid_depth
+  pce_group                                                     = each.value.pce_group
+  per_flow                                                      = each.value.per_flow
+  per_flow_forward_class_default                                = each.value.per_flow_forward_class_default
+  per_flow_forward_classes                                      = each.value.per_flow_forward_classes
+  performance_measurement_delay_logging_delay_exceeded          = each.value.performance_measurement_delay_logging_delay_exceeded
+  performance_measurement_delay_profile                         = each.value.performance_measurement_delay_profile
+  performance_measurement_liveness_backup_profile               = each.value.performance_measurement_liveness_backup_profile
+  performance_measurement_liveness_invalidation_action          = each.value.performance_measurement_liveness_invalidation_action
+  performance_measurement_liveness_logging_session_state_change = each.value.performance_measurement_liveness_logging_session_state_change
+  performance_measurement_liveness_profile                      = each.value.performance_measurement_liveness_profile
+  performance_measurement_reverse_path_label                    = each.value.performance_measurement_reverse_path_label
+  performance_measurement_reverse_path_segment_list             = each.value.performance_measurement_reverse_path_segment_list
+  source_address                                                = each.value.source_address
+  source_address_type                                           = each.value.source_address_type
+  srv6_locator_behavior                                         = each.value.srv6_locator_behavior
+  srv6_locator_binding_sid_type                                 = each.value.srv6_locator_binding_sid_type
+  srv6_locator_name                                             = each.value.srv6_locator_name
+  steering_invalidation_drop                                    = each.value.steering_invalidation_drop
+  steering_labeled_services_disable                             = each.value.steering_labeled_services_disable
+
+  depends_on = [
+    iosxr_segment_routing.segment_routing,
+    iosxr_segment_routing_v6.segment_routing_v6,
+    iosxr_segment_routing_te.segment_routing_te
+  ]
+}
+
+##### Segment Routing TE Policy #####
+
+locals {
+  segment_routing_te_policies = flatten([
+    for device in local.devices : [
+      for policy in try(local.device_config[device.name].segment_routing.traffic_engineering.policies, []) : {
+        key                                                           = format("%s/%s", device.name, policy.name)
+        device_name                                                   = device.name
+        policy_name                                                   = try(policy.name, null)
+        policy_color                                                  = try(policy.color, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.color, null)
+        policy_color_endpoint_address                                 = try(policy.endpoint_address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.endpoint_address, null)
+        policy_color_endpoint_type                                    = try(policy.endpoint_address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.endpoint_address, null) != null ? (can(regex(":", try(policy.endpoint_address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.endpoint_address, ""))) ? "end-point-type-ipv6" : "end-point-type-ipv4") : null
+        ipv6_disable                                                  = try(policy.ipv6_disable, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.ipv6_disable, null)
+        transit_eligible                                              = try(policy.transit_eligible, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.transit_eligible, null)
+        shutdown                                                      = try(policy.shutdown, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.shutdown, null)
+        bandwidth                                                     = try(policy.bandwidth, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.bandwidth, null)
+        max_install_standby_paths                                     = try(policy.max_install_standby_paths, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.max_install_standby_paths, null)
+        pce_group                                                     = try(policy.pce_group, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.pce_group, null)
+        binding_sid_type                                              = try(policy.binding_sid_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.binding_sid_type, null) == "mpls" ? "mpls-label-specified" : null
+        binding_sid_mpls_label                                        = try(policy.binding_sid_mpls_label, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.binding_sid_mpls_label, null)
+        path_protection                                               = try(policy.path_protection, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.path_protection, null)
+        source_address                                                = try(policy.source_address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.source_address, null)
+        source_address_type                                           = try(policy.source_address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.source_address, null) != null ? (can(regex(":", try(policy.source_address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.source_address, ""))) ? "end-point-type-ipv6" : "end-point-type-ipv4") : null
+        effective_metric_type                                         = try(policy.effective_metric.type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.effective_metric.type, null)
+        effective_metric_value                                        = try(policy.effective_metric.value, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.effective_metric.value, null)
+        auto_route_force_sr_include                                   = try(policy.auto_route.force_sr_include, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.force_sr_include, null)
+        auto_route_forward_class                                      = try(policy.auto_route.forward_class, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.forward_class, null)
+        auto_route_include_all_ipv4                                   = try(policy.auto_route.include_all_ipv4, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.include_all_ipv4, null)
+        auto_route_include_all_ipv6                                   = try(policy.auto_route.include_all_ipv6, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.include_all_ipv6, null)
+        auto_route_metric_type                                        = try(policy.auto_route.metric_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.metric_type, null)
+        auto_route_metric_constant_value                              = try(policy.auto_route.metric_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.metric_type, null) == "constant" ? try(policy.auto_route.metric, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.metric, null) : null
+        auto_route_metric_relative_value                              = try(policy.auto_route.metric_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.metric_type, null) == "relative" ? try(policy.auto_route.metric, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.metric, null) : null
+        bfd_enable                                                    = try(policy.bfd.enable, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.bfd.enable, null)
+        bfd_disable                                                   = try(policy.bfd.disable, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.bfd.disable, null)
+        bfd_multiplier                                                = try(policy.bfd.multiplier, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.bfd.multiplier, null)
+        bfd_minimum_interval                                          = try(policy.bfd.minimum_interval, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.bfd.minimum_interval, null)
+        bfd_invalidation_action                                       = try(policy.bfd.invalidation_action, null) != null ? format("invalid-ation-action-%s", policy.bfd.invalidation_action) : try(local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.bfd.invalidation_action, null) != null ? format("invalid-ation-action-%s", local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.bfd.invalidation_action) : null
+        bfd_reverse_path_binding_label                                = try(policy.bfd.reverse_path_binding_label, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.bfd.reverse_path_binding_label, null)
+        bfd_logging_session_state_change                              = try(policy.bfd.logging_session_state_change, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.bfd.logging_session_state_change, null)
+        steering_invalidation_drop                                    = try(policy.steering.invalidation_drop, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.steering.invalidation_drop, null)
+        steering_labeled_services_disable                             = try(policy.steering.labeled_services.disable, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.steering.labeled_services.disable, null)
+        performance_measurement_delay_profile                         = try(policy.performance_measurement.delay.profile, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.performance_measurement.delay.profile, null)
+        performance_measurement_delay_logging_delay_exceeded          = try(policy.performance_measurement.delay.logging_delay_exceeded, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.performance_measurement.delay.logging_delay_exceeded, null)
+        performance_measurement_liveness_profile                      = try(policy.performance_measurement.liveness.profile, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.performance_measurement.liveness.profile, null)
+        performance_measurement_liveness_backup_profile               = try(policy.performance_measurement.liveness.backup_profile, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.performance_measurement.liveness.backup_profile, null)
+        performance_measurement_liveness_logging_session_state_change = try(policy.performance_measurement.liveness.logging_session_state_change, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.performance_measurement.liveness.logging_session_state_change, null)
+        performance_measurement_liveness_invalidation_action          = try(policy.performance_measurement.liveness.invalidation_action, null) != null ? format("invalid-ation-action-%s", policy.performance_measurement.liveness.invalidation_action) : try(local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.performance_measurement.liveness.invalidation_action, null) != null ? format("invalid-ation-action-%s", local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.performance_measurement.liveness.invalidation_action) : null
+        performance_measurement_reverse_path_segment_list             = try(policy.performance_measurement.reverse_path_segment_list, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.performance_measurement.reverse_path_segment_list, null)
+        performance_measurement_reverse_path_label                    = try(policy.performance_measurement.reverse_path_label, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.performance_measurement.reverse_path_label, null)
+        srv6_locator_name                                             = try(policy.srv6.locator, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.srv6.locator, null)
+        srv6_locator_binding_sid_type                                 = try(policy.srv6.locator, null) != null ? "srv6-dynamic" : null
+        srv6_locator_behavior                                         = try(policy.srv6.behavior, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.srv6.behavior, null)
+        auto_route_include_prefixes = try(length(policy.auto_route.include_prefixes) == 0, true) ? null : [
+          for prefix in policy.auto_route.include_prefixes : {
+            af_type = format("af-type-%s", try(prefix.type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.include_prefixes.type, null))
+            address = try(prefix.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.include_prefixes.address, null)
+            length  = try(prefix.mask, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.include_prefixes.mask, null)
+          }
+        ]
+        candidate_paths_preferences = try(length(policy.candidate_paths) == 0, true) ? null : [
+          for pref in policy.candidate_paths : {
+            path_index                                   = try(pref.preference, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.preference, null)
+            lock_duration                                = try(pref.lock_duration, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.lock_duration, null)
+            pce_group                                    = try(pref.pce_group, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.pce_group, null)
+            backup_ineligible                            = try(pref.backup_ineligible, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.backup_ineligible, null)
+            bidirectional_association_id                 = try(pref.bidirectional_association_id, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.bidirectional_association_id, null)
+            bidirectional_corouted                       = try(pref.bidirectional_corouted, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.bidirectional_corouted, null)
+            per_flow                                     = try(pref.per_flow.enable, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.per_flow.enable, try(pref.per_flow, null) != null ? true : null)
+            per_flow_forward_class_default               = try(pref.per_flow.default_class, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.per_flow.default_class, null)
+            effective_metric_type                        = try(pref.effective_metric.type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.effective_metric.type, null)
+            effective_metric_value                       = try(pref.effective_metric.value, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.effective_metric.value, null)
+            constraints_segment_rules_protection_type    = try(pref.constraints.segments.protection_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.segments.protection_type, null)
+            constraints_segment_rules_sid_algorithm      = try(pref.constraints.segments.sid_algorithm, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.segments.sid_algorithm, null)
+            constraints_segment_rules_adjacency_sid_only = try(pref.constraints.segments.adjacency_sid_only, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.segments.adjacency_sid_only, null)
+            constraints_disjoint_path_group_id           = try(pref.constraints.disjoint_path.group_id, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.disjoint_path.group_id, null)
+            constraints_disjoint_path_type               = try(pref.constraints.disjoint_path.type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.disjoint_path.type, null)
+            constraints_disjoint_path_sub_id             = try(pref.constraints.disjoint_path.sub_id, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.disjoint_path.sub_id, null)
+            constraints_disjoint_path_shortest_path      = try(pref.constraints.disjoint_path.shortest_path, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.disjoint_path.shortest_path, null)
+            constraints_disjoint_path_fallback_disable   = try(pref.constraints.disjoint_path.fallback_disable, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.disjoint_path.fallback_disable, null)
+            per_flow_forward_classes = try(length(pref.per_flow.forward_classes) == 0, true) ? null : [
+              for fc in pref.per_flow.forward_classes : {
+                forward_class = try(fc.id, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.per_flow.forward_classes.id, null)
+                color         = try(fc.color, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.per_flow.forward_classes.color, null)
+              }
+            ]
+            constraints_affinity_rules = try(length(pref.constraints.affinities) == 0, true) ? null : [
+              for aff in pref.constraints.affinities : {
+                affinity_type = format("affinity-%s", try(aff.type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.affinities.type, null))
+                affinities = try(length(aff.entries) == 0, true) ? null : [
+                  for entry in aff.entries : {
+                    affinity_name = try(entry.name, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.affinities.entries.name, null)
+                  }
+                ]
+              }
+            ]
+            constraints_bounds = try(length(pref.constraints.bounds) == 0, true) ? null : [
+              for bound in pref.constraints.bounds : {
+                type        = format("bound-scope-%s", try(bound.scope, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.bounds.scope, null))
+                metric_type = try(bound.type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.bounds.type, null)
+                value       = try(bound.metric, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.constraints.bounds.metric, null)
+              }
+            ]
+            paths = try(length(pref.paths) == 0, true) ? null : [
+              for path in pref.paths : {
+                type                      = try(path.type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.type, null)
+                hop_type                  = try(path.hop_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.hop_type, "mpls")
+                segment_list_name         = try(path.type, null) == "dynamic" ? try(path.segment_list, "dynamic") : try(path.segment_list, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.segment_list, null)
+                weight                    = try(path.weight, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.weight, null)
+                metric_type               = try(path.metric_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.metric_type, null)
+                metric_sid_limit          = try(path.metric_sid_limit, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.metric_sid_limit, null)
+                metric_margin_type        = try(path.metric_margin_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.metric_margin_type, null)
+                metric_margin_absolute    = try(path.metric_margin_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.metric_margin_type, null) == "absolute" ? try(path.metric_margin, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.metric_margin, null) : null
+                metric_margin_relative    = try(path.metric_margin_type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.metric_margin_type, null) == "relative" ? try(path.metric_margin, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.metric_margin, null) : null
+                anycast                   = try(path.anycast_sid_inclusion, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.anycast_sid_inclusion, null)
+                pcep                      = try(path.pcep, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.pcep, null)
+                reverse_path_segment_list = try(path.reverse_path_segment_list, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.candidate_paths.paths.reverse_path_segment_list, null)
+              }
+            ]
+          }
+        ]
+      }
+    ] if try(local.device_config[device.name].segment_routing.traffic_engineering.policies, null) != null
+  ])
+}
+
+resource "iosxr_segment_routing_te_policy" "segment_routing_te_policy" {
+  for_each                                                      = { for policy in local.segment_routing_te_policies : policy.key => policy }
+  device                                                        = each.value.device_name
+  policy_name                                                   = each.value.policy_name
+  auto_route_force_sr_include                                   = each.value.auto_route_force_sr_include
+  auto_route_forward_class                                      = each.value.auto_route_forward_class
+  auto_route_include_all_ipv4                                   = each.value.auto_route_include_all_ipv4
+  auto_route_include_all_ipv6                                   = each.value.auto_route_include_all_ipv6
+  auto_route_include_prefixes                                   = each.value.auto_route_include_prefixes
+  auto_route_metric_constant_value                              = each.value.auto_route_metric_constant_value
+  auto_route_metric_relative_value                              = each.value.auto_route_metric_relative_value
+  auto_route_metric_type                                        = each.value.auto_route_metric_type
+  bandwidth                                                     = each.value.bandwidth
+  bfd_disable                                                   = each.value.bfd_disable
+  bfd_enable                                                    = each.value.bfd_enable
+  bfd_invalidation_action                                       = each.value.bfd_invalidation_action
+  bfd_logging_session_state_change                              = each.value.bfd_logging_session_state_change
+  bfd_minimum_interval                                          = each.value.bfd_minimum_interval
+  bfd_multiplier                                                = each.value.bfd_multiplier
+  bfd_reverse_path_binding_label                                = each.value.bfd_reverse_path_binding_label
+  binding_sid_mpls_label                                        = each.value.binding_sid_mpls_label
+  binding_sid_type                                              = each.value.binding_sid_type
+  candidate_paths_preferences                                   = each.value.candidate_paths_preferences
+  effective_metric_type                                         = each.value.effective_metric_type
+  effective_metric_value                                        = each.value.effective_metric_value
+  ipv6_disable                                                  = each.value.ipv6_disable
+  max_install_standby_paths                                     = each.value.max_install_standby_paths
+  path_protection                                               = each.value.path_protection
+  pce_group                                                     = each.value.pce_group
+  performance_measurement_delay_logging_delay_exceeded          = each.value.performance_measurement_delay_logging_delay_exceeded
+  performance_measurement_delay_profile                         = each.value.performance_measurement_delay_profile
+  performance_measurement_liveness_backup_profile               = each.value.performance_measurement_liveness_backup_profile
+  performance_measurement_liveness_invalidation_action          = each.value.performance_measurement_liveness_invalidation_action
+  performance_measurement_liveness_logging_session_state_change = each.value.performance_measurement_liveness_logging_session_state_change
+  performance_measurement_liveness_profile                      = each.value.performance_measurement_liveness_profile
+  performance_measurement_reverse_path_label                    = each.value.performance_measurement_reverse_path_label
+  performance_measurement_reverse_path_segment_list             = each.value.performance_measurement_reverse_path_segment_list
+  policy_color                                                  = each.value.policy_color
+  policy_color_endpoint_address                                 = each.value.policy_color_endpoint_address
+  policy_color_endpoint_type                                    = each.value.policy_color_endpoint_type
+  shutdown                                                      = each.value.shutdown
+  source_address                                                = each.value.source_address
+  source_address_type                                           = each.value.source_address_type
+  srv6_locator_behavior                                         = each.value.srv6_locator_behavior
+  srv6_locator_binding_sid_type                                 = each.value.srv6_locator_binding_sid_type
+  srv6_locator_name                                             = each.value.srv6_locator_name
+  steering_invalidation_drop                                    = each.value.steering_invalidation_drop
+  steering_labeled_services_disable                             = each.value.steering_labeled_services_disable
+  transit_eligible                                              = each.value.transit_eligible
+
+  depends_on = [
+    iosxr_segment_routing.segment_routing,
+    iosxr_segment_routing_v6.segment_routing_v6,
+    iosxr_segment_routing_te.segment_routing_te
   ]
 }
