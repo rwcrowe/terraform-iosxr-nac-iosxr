@@ -97,6 +97,7 @@ module "iosxr" {
 | [iosxr_flow_monitor_map.flow_monitor_map](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/flow_monitor_map) | resource |
 | [iosxr_flow_sampler_map.flow_sampler_map](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/flow_sampler_map) | resource |
 | [iosxr_fpd.fpd](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/fpd) | resource |
+| [iosxr_ftp.ftp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/ftp) | resource |
 | [iosxr_gnmi.gnmi](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/gnmi) | resource |
 | [iosxr_hostname.hostname](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/hostname) | resource |
 | [iosxr_interface_bundle_ether.bundle_ether](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/interface_bundle_ether) | resource |
@@ -192,6 +193,8 @@ module "iosxr" {
 | [iosxr_tacacs_server.tacacs_server](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/tacacs_server) | resource |
 | [iosxr_tag_set.tag_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/tag_set) | resource |
 | [iosxr_telnet.telnet](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/telnet) | resource |
+| [iosxr_tftp_client.tftp_client](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/tftp_client) | resource |
+| [iosxr_tftp_server.tftp_server](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/tftp_server) | resource |
 | [iosxr_vrf.vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/vrf) | resource |
 | [iosxr_vty_pool.vty_pool](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/vty_pool) | resource |
 ## Modules
