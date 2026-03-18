@@ -197,6 +197,7 @@ module "iosxr" {
 | [iosxr_tftp_server.tftp_server](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/tftp_server) | resource |
 | [iosxr_vrf.vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/vrf) | resource |
 | [iosxr_vty_pool.vty_pool](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/vty_pool) | resource |
+| [iosxr_xml_agent.xml_agent](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/xml_agent) | resource |
 ## Modules
 
 | Name | Source | Version |
