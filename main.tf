@@ -149,6 +149,7 @@ resource "iosxr_cli" "cli_0" {
     iosxr_flow_monitor_map.flow_monitor_map,
     iosxr_flow_sampler_map.flow_sampler_map,
     iosxr_fpd.fpd,
+    iosxr_ftp.ftp,
     iosxr_gnmi.gnmi,
     iosxr_hostname.hostname,
     iosxr_interface_bundle_ether.bundle_ether,
@@ -175,6 +176,8 @@ resource "iosxr_cli" "cli_0" {
     iosxr_logging_vrf.logging_vrf,
     iosxr_mpls_oam.mpls_oam,
     iosxr_mpls_traffic_eng.mpls_traffic_eng,
+    iosxr_netconf_agent_tty.netconf_agent_tty,
+    iosxr_netconf_yang_agent.netconf_yang_agent,
     iosxr_ntp.ntp,
     iosxr_ospf_area_set.ospf_area_set,
     iosxr_pce.pce,
@@ -237,8 +240,11 @@ resource "iosxr_cli" "cli_0" {
     iosxr_snmp_server_mib.snmp_server_mib,
     iosxr_ssh.ssh,
     iosxr_tag_set.tag_set,
+    iosxr_tftp_client.tftp_client,
+    iosxr_tftp_server.tftp_server,
     iosxr_telnet.telnet,
-    iosxr_vrf.vrf
+    iosxr_vrf.vrf,
+    iosxr_xml_agent.xml_agent
   ]
 }
 

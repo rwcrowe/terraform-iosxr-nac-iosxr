@@ -128,6 +128,8 @@ module "iosxr" {
 | [iosxr_mac_set.mac_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/mac_set) | resource |
 | [iosxr_mpls_oam.mpls_oam](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/mpls_oam) | resource |
 | [iosxr_mpls_traffic_eng.mpls_traffic_eng](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/mpls_traffic_eng) | resource |
+| [iosxr_netconf_agent_tty.netconf_agent_tty](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/netconf_agent_tty) | resource |
+| [iosxr_netconf_yang_agent.netconf_yang_agent](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/netconf_yang_agent) | resource |
 | [iosxr_ntp.ntp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/ntp) | resource |
 | [iosxr_ospf_area_set.ospf_area_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/ospf_area_set) | resource |
 | [iosxr_pce.pce](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/pce) | resource |
