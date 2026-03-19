@@ -14,6 +14,13 @@ locals {
     "4" = "flash-override", "5" = "critical",
     "6" = "internet", "7" = "network"
   }
+  # Used by iosxr_key_chain to convert MM-DD-YYYY date format to YANG month enum
+  keychain_month_names = {
+    "01" = "january", "02" = "february", "03" = "march",
+    "04" = "april", "05" = "may", "06" = "june",
+    "07" = "july", "08" = "august", "09" = "september",
+    "10" = "october", "11" = "november", "12" = "december"
+  }
   # iosxr_segment_routing_te: maps flex-algo metric type names to YANG uint32 values
   flex_algo_metric_type_map = {
     "igp"       = "0"
