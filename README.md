@@ -79,6 +79,7 @@ module "iosxr" {
 | [iosxr_cli.cli_8](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/cli) | resource |
 | [iosxr_cli.cli_9](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/cli) | resource |
 | [iosxr_community_set.community_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/community_set) | resource |
+| [iosxr_control_plane.control_plane](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/control_plane) | resource |
 | [iosxr_domain.domain](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/domain) | resource |
 | [iosxr_domain_vrf.domain_vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/domain_vrf) | resource |
 | [iosxr_error_disable_recovery.error_disable_recovery](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/error_disable_recovery) | resource |
@@ -122,6 +123,7 @@ module "iosxr" {
 | [iosxr_line_console.line_console](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/line_console) | resource |
 | [iosxr_line_default.line_default](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/line_default) | resource |
 | [iosxr_line_template.line_template](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/line_template) | resource |
+| [iosxr_linux_networking.linux_networking](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/linux_networking) | resource |
 | [iosxr_lldp.lldp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/lldp) | resource |
 | [iosxr_logging.logging](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/logging) | resource |
 | [iosxr_logging_vrf.logging_vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/logging_vrf) | resource |
@@ -194,12 +196,15 @@ module "iosxr" {
 | [iosxr_ssh.ssh](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/ssh) | resource |
 | [iosxr_tacacs_server.tacacs_server](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/tacacs_server) | resource |
 | [iosxr_tag_set.tag_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/tag_set) | resource |
+| [iosxr_telemetry_model_driven.telemetry_model_driven](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/telemetry_model_driven) | resource |
 | [iosxr_telnet.telnet](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/telnet) | resource |
 | [iosxr_tftp_client.tftp_client](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/tftp_client) | resource |
 | [iosxr_tftp_server.tftp_server](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/tftp_server) | resource |
+| [iosxr_tpa.tpa](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/tpa) | resource |
 | [iosxr_vrf.vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/vrf) | resource |
 | [iosxr_vty_pool.vty_pool](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/vty_pool) | resource |
 | [iosxr_xml_agent.xml_agent](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/xml_agent) | resource |
+| [terraform_data.control_plane_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 ## Modules
 
 | Name | Source | Version |
