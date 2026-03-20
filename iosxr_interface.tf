@@ -609,13 +609,6 @@ resource "iosxr_interface_ethernet" "ethernet" {
   ptp_interop_ingress_conversion_clock_class_default                                 = each.value.ptp_interop_ingress_conversion_clock_class_default
   ptp_interop_ingress_conversion_clock_class_mappings                                = each.value.ptp_interop_ingress_conversion_clock_class_mappings
 
-  lifecycle {
-    precondition {
-      condition     = (each.value.ipv4_address == null && each.value.ipv4_netmask == null) || (each.value.ipv4_address != null && each.value.ipv4_netmask != null)
-      error_message = "Interface ${each.key}: ipv4_address and ipv4_netmask must both be specified or both be omitted."
-    }
-  }
-
   depends_on = [
     # Future dependencies - uncomment when resource is created:
     #iosxr_ipv4_access_list.ipv4_access_list,
@@ -1396,13 +1389,6 @@ resource "iosxr_interface_ethernet_subinterface" "ethernet_subinterface" {
   ptp_interop_ingress_conversion_clock_class_default        = each.value.ptp_interop_ingress_conversion_clock_class_default
   ptp_interop_ingress_conversion_clock_class_mappings       = each.value.ptp_interop_ingress_conversion_clock_class_mappings
 
-  lifecycle {
-    precondition {
-      condition     = (each.value.ipv4_address == null && each.value.ipv4_netmask == null) || (each.value.ipv4_address != null && each.value.ipv4_netmask != null)
-      error_message = "Interface ${each.key}: ipv4_address and ipv4_netmask must both be specified or both be omitted."
-    }
-  }
-
   depends_on = [
     # Future dependencies - uncomment when resource is created:
     iosxr_interface_ethernet.ethernet,
@@ -1969,13 +1955,6 @@ resource "iosxr_interface_bundle_ether" "bundle_ether" {
   ptp_interop_ingress_conversion_clock_class_default        = each.value.ptp_interop_ingress_conversion_clock_class_default
   ptp_interop_ingress_conversion_clock_class_mappings       = each.value.ptp_interop_ingress_conversion_clock_class_mappings
 
-  lifecycle {
-    precondition {
-      condition     = (each.value.ipv4_address == null && each.value.ipv4_netmask == null) || (each.value.ipv4_address != null && each.value.ipv4_netmask != null)
-      error_message = "Interface ${each.key}: ipv4_address and ipv4_netmask must both be specified or both be omitted."
-    }
-  }
-
   depends_on = [
     # Future dependencies - uncomment when resource is created:
     iosxr_interface_ethernet.ethernet,
@@ -2484,13 +2463,6 @@ resource "iosxr_interface_bundle_ether_subinterface" "bundle_ether_subinterface"
   ptp_interop_ingress_conversion_clock_class_default        = each.value.ptp_interop_ingress_conversion_clock_class_default
   ptp_interop_ingress_conversion_clock_class_mappings       = each.value.ptp_interop_ingress_conversion_clock_class_mappings
 
-  lifecycle {
-    precondition {
-      condition     = (each.value.ipv4_address == null && each.value.ipv4_netmask == null) || (each.value.ipv4_address != null && each.value.ipv4_netmask != null)
-      error_message = "Interface ${each.key}: ipv4_address and ipv4_netmask must both be specified or both be omitted."
-    }
-  }
-
   depends_on = [
     # Future dependencies - uncomment when resource is created:
     iosxr_interface_bundle_ether.bundle_ether,
@@ -2907,13 +2879,6 @@ resource "iosxr_interface_bvi" "bvi" {
   ptp_interop_ingress_conversion_clock_class_default        = each.value.ptp_interop_ingress_conversion_clock_class_default
   ptp_interop_ingress_conversion_clock_class_mappings       = each.value.ptp_interop_ingress_conversion_clock_class_mappings
 
-  lifecycle {
-    precondition {
-      condition     = (each.value.ipv4_address == null && each.value.ipv4_netmask == null) || (each.value.ipv4_address != null && each.value.ipv4_netmask != null)
-      error_message = "Interface ${each.key}: ipv4_address and ipv4_netmask must both be specified or both be omitted."
-    }
-  }
-
   depends_on = [
     # Future dependencies - uncomment when resource is created:
     iosxr_interface_ethernet.ethernet,
@@ -3052,13 +3017,6 @@ resource "iosxr_interface_loopback" "loopback" {
   ipv6_nd_prefix_default_no_adv                            = each.value.ipv6_nd_prefix_default_no_adv
   ipv6_nd_prefix_default_no_autoconfig                     = each.value.ipv6_nd_prefix_default_no_autoconfig
 
-  lifecycle {
-    precondition {
-      condition     = (each.value.ipv4_address == null && each.value.ipv4_netmask == null) || (each.value.ipv4_address != null && each.value.ipv4_netmask != null)
-      error_message = "Interface ${each.key}: ipv4_address and ipv4_netmask must both be specified or both be omitted."
-    }
-  }
-
   depends_on = [
     iosxr_vrf.vrf
   ]
@@ -3189,13 +3147,6 @@ resource "iosxr_interface_tunnel_ip" "tunnel_ip" {
   tunnel_key                                     = each.value.tunnel_key
   tunnel_vrf                                     = each.value.tunnel_vrf
   keepalive_period                               = each.value.keepalive_period
-
-  lifecycle {
-    precondition {
-      condition     = (each.value.ipv4_address == null && each.value.ipv4_netmask == null) || (each.value.ipv4_address != null && each.value.ipv4_netmask != null)
-      error_message = "Interface ${each.key}: ipv4_address and ipv4_netmask must both be specified or both be omitted."
-    }
-  }
 
   depends_on = [
     iosxr_vrf.vrf
@@ -3435,13 +3386,6 @@ resource "iosxr_interface_tunnel_te" "tunnel_te" {
   bfd_dampening_secondary_wait                                            = each.value.bfd_dampening_secondary_wait
   bfd_encap_gal                                                           = each.value.bfd_encap_gal
   destination                                                             = each.value.destination
-
-  lifecycle {
-    precondition {
-      condition     = (each.value.ipv4_address == null && each.value.ipv4_netmask == null) || (each.value.ipv4_address != null && each.value.ipv4_netmask != null)
-      error_message = "Interface ${each.key}: ipv4_address and ipv4_netmask must both be specified or both be omitted."
-    }
-  }
 
   depends_on = [
     iosxr_vrf.vrf
