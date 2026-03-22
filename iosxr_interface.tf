@@ -1422,6 +1422,7 @@ locals {
         key                          = format("%s/Bundle-Ether%s", device.name, trimprefix(be.id, "$string "))
         device                       = device.name
         id                           = trimprefix(be.id, "$string ")
+        l2transport                  = try(be.l2transport, local.defaults.iosxr.devices.configuration.interfaces.bundle_ethernets.l2transport, null)
         point_to_point               = try(be.point_to_point, local.defaults.iosxr.devices.configuration.interfaces.bundle_ethernets.point_to_point, null)
         multipoint                   = try(be.multipoint, local.defaults.iosxr.devices.configuration.interfaces.bundle_ethernets.multipoint, null)
         dampening                    = try(be.dampening, local.defaults.iosxr.devices.configuration.interfaces.bundle_ethernets.dampening, null)
@@ -1764,6 +1765,7 @@ resource "iosxr_interface_bundle_ether" "bundle_ether" {
   device   = each.value.device
 
   name                                                      = each.value.id
+  l2transport                                               = each.value.l2transport
   point_to_point                                            = each.value.point_to_point
   multipoint                                                = each.value.multipoint
   dampening                                                 = each.value.dampening
@@ -1997,6 +1999,7 @@ locals {
           key                          = format("%s/Bundle-Ether%s", device.name, trimprefix(subint.id, "$string "))
           device                       = device.name
           id                           = trimprefix(subint.id, "$string ")
+          l2transport                  = try(subint.l2transport, local.defaults.iosxr.devices.configuration.interfaces.bundle_ethernets.subinterfaces.l2transport, null)
           point_to_point               = try(subint.point_to_point, local.defaults.iosxr.devices.configuration.interfaces.bundle_ethernets.subinterfaces.point_to_point, null)
           multipoint                   = try(subint.multipoint, local.defaults.iosxr.devices.configuration.interfaces.bundle_ethernets.subinterfaces.multipoint, null)
           dampening                    = try(subint.dampening, local.defaults.iosxr.devices.configuration.interfaces.bundle_ethernets.subinterfaces.dampening, null)
@@ -2306,6 +2309,7 @@ resource "iosxr_interface_bundle_ether_subinterface" "bundle_ether_subinterface"
   device   = each.value.device
 
   name                                                      = each.value.id
+  l2transport                                               = each.value.l2transport
   point_to_point                                            = each.value.point_to_point
   multipoint                                                = each.value.multipoint
   dampening                                                 = each.value.dampening
