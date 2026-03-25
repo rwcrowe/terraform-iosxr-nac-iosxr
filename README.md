@@ -94,6 +94,7 @@ module "iosxr" {
 | [iosxr_extcommunity_rt_set.extcommunity_rt_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/extcommunity_rt_set) | resource |
 | [iosxr_extcommunity_seg_nh_set.extcommunity_seg_nh_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/extcommunity_seg_nh_set) | resource |
 | [iosxr_extcommunity_soo_set.extcommunity_soo_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/extcommunity_soo_set) | resource |
+| [iosxr_flow_exporter_map.flow_exporter_map](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/flow_exporter_map) | resource |
 | [iosxr_flow_monitor_map.flow_monitor_map](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/flow_monitor_map) | resource |
 | [iosxr_flow_sampler_map.flow_sampler_map](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/flow_sampler_map) | resource |
 | [iosxr_fpd.fpd](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/fpd) | resource |
@@ -125,6 +126,7 @@ module "iosxr" {
 | [iosxr_logging.logging](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/logging) | resource |
 | [iosxr_logging_vrf.logging_vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/logging_vrf) | resource |
 | [iosxr_mac_set.mac_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/mac_set) | resource |
+| [iosxr_monitor_session.monitor_session](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/monitor_session) | resource |
 | [iosxr_mpls_oam.mpls_oam](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/mpls_oam) | resource |
 | [iosxr_mpls_traffic_eng.mpls_traffic_eng](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/mpls_traffic_eng) | resource |
 | [iosxr_ntp.ntp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/ntp) | resource |
@@ -194,6 +196,10 @@ module "iosxr" {
 | [iosxr_telnet.telnet](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/telnet) | resource |
 | [iosxr_vrf.vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/vrf) | resource |
 | [iosxr_vty_pool.vty_pool](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/vty_pool) | resource |
+| [terraform_data.bundle_ether_flow_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
+| [terraform_data.bundle_ether_subinterface_flow_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
+| [terraform_data.ethernet_flow_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
+| [terraform_data.ethernet_subinterface_flow_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 ## Modules
 
 | Name | Source | Version |
