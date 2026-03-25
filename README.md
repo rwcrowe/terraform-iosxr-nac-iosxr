@@ -135,6 +135,8 @@ module "iosxr" {
 | [iosxr_policy_global_set.policy_global_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/policy_global_set) | resource |
 | [iosxr_policy_map_qos.policy_map_qos](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/policy_map_qos) | resource |
 | [iosxr_prefix_set.prefix_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/prefix_set) | resource |
+| [iosxr_ptp.ptp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/ptp) | resource |
+| [iosxr_ptp_profile.ptp_profile](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/ptp_profile) | resource |
 | [iosxr_radius_source_interface.radius_source_interface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/radius_source_interface) | resource |
 | [iosxr_rd_set.rd_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/rd_set) | resource |
 | [iosxr_route_policy.route_policy](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.0/docs/resources/route_policy) | resource |

@@ -182,6 +182,8 @@ resource "iosxr_cli" "cli_0" {
     iosxr_pce.pce,
     iosxr_policy_global_set.policy_global_set,
     iosxr_policy_map_qos.policy_map_qos,
+    iosxr_ptp.ptp,
+    iosxr_ptp_profile.ptp_profile,
     iosxr_prefix_set.prefix_set,
     iosxr_rd_set.rd_set,
     iosxr_route_policy.route_policy,
