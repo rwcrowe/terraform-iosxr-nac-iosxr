@@ -102,7 +102,7 @@ locals {
           anycast                = try(locator.anycast, local.defaults.iosxr.devices.configuration.segment_routing.srv6.locators.anycast, null)
           micro_segment_behavior = try(locator.micro_segment_behavior_unode, local.defaults.iosxr.devices.configuration.segment_routing.srv6.locators.micro_segment_behavior_unode, null) == "psp-usd" ? "unode-psp-usd" : try(locator.micro_segment_behavior_unode, local.defaults.iosxr.devices.configuration.segment_routing.srv6.locators.micro_segment_behavior_unode, null) == "shift-only" ? "unode-shift-only" : null
           prefix                 = try(locator.prefix, local.defaults.iosxr.devices.configuration.segment_routing.srv6.locators.prefix, null)
-          prefix_length          = try(locator.mask, local.defaults.iosxr.devices.configuration.segment_routing.srv6.locators.mask, null)
+          prefix_length          = try(locator.length, local.defaults.iosxr.devices.configuration.segment_routing.srv6.locators.length, null)
         }
       ]
     } if try(local.device_config[device.name].segment_routing.srv6, null) != null || try(local.defaults.iosxr.devices.configuration.segment_routing.srv6, null) != null
@@ -589,7 +589,7 @@ locals {
           for prefix in policy.auto_route.include_prefixes : {
             af_type = format("af-type-%s", try(prefix.type, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.include_prefixes.type, null))
             address = try(prefix.address, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.include_prefixes.address, null)
-            length  = try(prefix.mask, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.include_prefixes.mask, null)
+            length  = try(prefix.length, local.defaults.iosxr.devices.configuration.segment_routing.traffic_engineering.policies.auto_route.include_prefixes.length, null)
           }
         ]
         candidate_paths_preferences = try(length(policy.candidate_paths) == 0, true) ? null : [
