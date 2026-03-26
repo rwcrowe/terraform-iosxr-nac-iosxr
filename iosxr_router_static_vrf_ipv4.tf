@@ -3,11 +3,11 @@ locals {
     for device in local.devices : [
       for vrf in try(local.device_config[device.name].routing.static_routes.vrfs, []) : [
         for route in try(vrf.address_family.ipv4_unicast.prefixes, []) : {
-          key            = format("%s/%s/%s/%s", device.name, vrf.name, route.address, route.mask)
+          key            = format("%s/%s/%s/%s", device.name, vrf.name, route.address, route.length)
           device_name    = device.name
           vrf_name       = try(vrf.name, local.defaults.iosxr.devices.configuration.routing.static_routes.vrfs.name, null)
           prefix_address = try(route.address, local.defaults.iosxr.devices.configuration.routing.static_routes.vrfs.address_family.ipv4_unicast.prefixes.address, null)
-          prefix_length  = try(route.mask, local.defaults.iosxr.devices.configuration.routing.static_routes.vrfs.address_family.ipv4_unicast.prefixes.mask, null)
+          prefix_length  = try(route.length, local.defaults.iosxr.devices.configuration.routing.static_routes.vrfs.address_family.ipv4_unicast.prefixes.length, null)
           nexthop_interfaces = try(length(route.next_hops) == 0, true) ? null : [for nh in route.next_hops : {
             interface_name  = try(nh.interface, local.defaults.iosxr.devices.configuration.routing.static_routes.vrfs.address_family.ipv4_unicast.prefixes.next_hops.interface, null)
             description     = try(nh.description, local.defaults.iosxr.devices.configuration.routing.static_routes.vrfs.address_family.ipv4_unicast.prefixes.next_hops.description, null)
@@ -130,11 +130,11 @@ locals {
     for device in local.devices : [
       for vrf in try(local.device_config[device.name].routing.static_routes.vrfs, []) : [
         for route in try(vrf.address_family.ipv4_multicast.prefixes, []) : {
-          key            = format("%s/%s/%s/%s", device.name, vrf.name, route.address, route.mask)
+          key            = format("%s/%s/%s/%s", device.name, vrf.name, route.address, route.length)
           device_name    = device.name
           vrf_name       = try(vrf.name, local.defaults.iosxr.devices.configuration.routing.static_routes.vrfs.name, null)
           prefix_address = try(route.address, local.defaults.iosxr.devices.configuration.routing.static_routes.vrfs.address_family.ipv4_multicast.prefixes.address, null)
-          prefix_length  = try(route.mask, local.defaults.iosxr.devices.configuration.routing.static_routes.vrfs.address_family.ipv4_multicast.prefixes.mask, null)
+          prefix_length  = try(route.length, local.defaults.iosxr.devices.configuration.routing.static_routes.vrfs.address_family.ipv4_multicast.prefixes.length, null)
           nexthop_interfaces = try(length(route.next_hops) == 0, true) ? null : [for nh in route.next_hops : {
             interface_name  = try(nh.interface, local.defaults.iosxr.devices.configuration.routing.static_routes.vrfs.address_family.ipv4_multicast.prefixes.next_hops.interface, null)
             description     = try(nh.description, local.defaults.iosxr.devices.configuration.routing.static_routes.vrfs.address_family.ipv4_multicast.prefixes.next_hops.description, null)
