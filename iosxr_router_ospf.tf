@@ -203,7 +203,7 @@ locals {
         queue_dispatch_spf_lsa_limit                              = try(ospf_process.queue_dispatch_spf_lsa_limit, local.defaults.iosxr.devices.configuration.routing.ospf_processes.queue_dispatch_spf_lsa_limit, null)
         summary_prefixes = try(length(ospf_process.summary_prefixes) == 0, true) ? null : [for prefix in ospf_process.summary_prefixes : {
           address       = try(prefix.address, local.defaults.iosxr.devices.configuration.routing.ospf_processes.summary_prefixes.address, null)
-          mask          = try(prefix.mask, local.defaults.iosxr.devices.configuration.routing.ospf_processes.summary_prefixes.mask, null)
+          mask          = try(provider::utils::normalize_mask(prefix.mask, "dotted-decimal"), prefix.mask, local.defaults.iosxr.devices.configuration.routing.ospf_processes.summary_prefixes.mask, null)
           not_advertise = try(prefix.not_advertise, local.defaults.iosxr.devices.configuration.routing.ospf_processes.summary_prefixes.not_advertise, null)
           tag           = try(prefix.tag, local.defaults.iosxr.devices.configuration.routing.ospf_processes.summary_prefixes.tag, null)
         }]

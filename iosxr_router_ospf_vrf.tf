@@ -185,7 +185,7 @@ locals {
           queue_dispatch_spf_lsa_limit                              = try(vrf.queue_dispatch_spf_lsa_limit, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.queue_dispatch_spf_lsa_limit, null)
           summary_prefixes = try(length(vrf.summary_prefixes) == 0, true) ? null : [for sp in vrf.summary_prefixes : {
             address       = try(sp.address, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.summary_prefixes.address, null)
-            mask          = try(sp.mask, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.summary_prefixes.mask, null)
+            mask          = try(provider::utils::normalize_mask(sp.mask, "dotted-decimal"), sp.mask, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.summary_prefixes.mask, null)
             not_advertise = try(sp.not_advertise, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.summary_prefixes.not_advertise, null)
             tag           = try(sp.tag, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.summary_prefixes.tag, null)
             }

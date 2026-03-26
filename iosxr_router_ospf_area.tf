@@ -118,8 +118,8 @@ locals {
           ranges = try(length(area.ranges) == 0, true) ? null : [for range in area.ranges : {
             address       = try(range.address, local.defaults.iosxr.devices.configuration.routing.ospf_processes.areas.ranges.address, null)
             mask          = try(provider::utils::normalize_mask(range.mask, "dotted-decimal"), range.mask, local.defaults.iosxr.devices.configuration.routing.ospf_processes.areas.ranges.mask, null)
-            advertise     = try(range.advertise, local.defaults.iosxr.devices.configuration.routing.ospf_processes.areas.ranges.advertise, null)
-            not_advertise = try(range.not_advertise, local.defaults.iosxr.devices.configuration.routing.ospf_processes.areas.ranges.not_advertise, null)
+            advertise     = try(range.advertise, local.defaults.iosxr.devices.configuration.routing.ospf_processes.areas.ranges.advertise, true) == true ? true : null
+            not_advertise = try(range.advertise, local.defaults.iosxr.devices.configuration.routing.ospf_processes.areas.ranges.advertise, true) == false ? true : null
           }]
           message_digest_keys = try(length(area.authentication.message_digest_keys) == 0, true) ? null : [for key in area.authentication.message_digest_keys : {
             key_id        = try(key.id, local.defaults.iosxr.devices.configuration.routing.ospf_processes.areas.authentication.message_digest_keys.id, null)
