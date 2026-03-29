@@ -90,7 +90,7 @@ locals {
           distribute_list_out_ospf_acl               = try(vrf.distribute_list_out_ospf_acl, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.distribute_list_out_ospf_acl, null)
           packet_size                                = try(vrf.packet_size, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.packet_size, null)
           bfd_fast_detect                            = try(vrf.bfd_fast_detect, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.bfd_fast_detect, null) == "enable" ? true : null
-          bfd_fast_detect_strict_mode                = try(vrf.bfd_fast_detect, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.bfd_fast_detect, null) == "strict_mode" ? true : null
+          bfd_fast_detect_strict_mode                = try(vrf.bfd_fast_detect, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.bfd_fast_detect, null) == "strict-mode" ? true : null
           bfd_minimum_interval                       = try(vrf.bfd_minimum_interval, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.bfd_minimum_interval, null)
           bfd_multiplier                             = try(vrf.bfd_multiplier, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.bfd_multiplier, null)
           security_ttl                               = try(vrf.security_ttl, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.security_ttl, null) == "enable" ? true : null
@@ -248,7 +248,7 @@ locals {
           microloop_avoidance_segment_routing              = try(vrf.microloop_avoidance, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.microloop_avoidance, null) == "segment-routing" ? true : null
           microloop_avoidance_rib_update_delay             = try(vrf.microloop_avoidance_rib_update_delay, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.microloop_avoidance_rib_update_delay, null)
           authentication_key_encrypted                     = try(vrf.authentication.key.password, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.authentication.key.password, null)
-          authentication_message_digest                    = try(vrf.authentication.type, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.authentication.type, null) == "message_digest" ? true : null
+          authentication_message_digest                    = try(vrf.authentication.type, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.authentication.type, null) == "message-digest" ? true : null
           authentication_keychain                          = try(vrf.authentication.type, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.authentication.type, null) == "keychain" ? true : null
           authentication_keychain_name                     = try(vrf.authentication.keychain, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.authentication.keychain, null)
           authentication_null                              = try(vrf.authentication.type, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.authentication.type, null) == "null" ? true : null
@@ -258,9 +258,9 @@ locals {
             }
           ]
           network_broadcast                                 = try(vrf.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.network, null) == "broadcast" ? true : null
-          network_non_broadcast                             = try(vrf.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.network, null) == "non_broadcast" ? true : null
-          network_point_to_point                            = try(vrf.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.network, null) == "point_to_point" ? true : null
-          network_point_to_multipoint                       = try(vrf.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.network, null) == "point_to_multipoint" ? true : null
+          network_non_broadcast                             = try(vrf.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.network, null) == "non-broadcast" ? true : null
+          network_point_to_point                            = try(vrf.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.network, null) == "point-to-point" ? true : null
+          network_point_to_multipoint                       = try(vrf.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.network, null) == "point-to-multipoint" ? true : null
           mpls_ldp_sync                                     = try(vrf.mpls_ldp_sync, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.mpls_ldp_sync, null) == "enable" ? true : null
           cost                                              = try(vrf.cost, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.cost, null)
           cost_fallback_anomaly_delay_igp_metric_increment  = try(vrf.cost_fallback.anomaly_delay.igp_metric_increment, local.defaults.iosxr.devices.configuration.routing.ospf_processes.vrfs.cost_fallback.anomaly_delay.igp_metric_increment, null)

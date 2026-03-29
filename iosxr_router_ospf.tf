@@ -107,7 +107,7 @@ locals {
         distribute_list_out_ospf_acl               = try(ospf_process.distribute_list_out_ospf_acl, local.defaults.iosxr.devices.configuration.routing.ospf_processes.distribute_list_out_ospf_acl, null)
         packet_size                                = try(ospf_process.packet_size, local.defaults.iosxr.devices.configuration.routing.ospf_processes.packet_size, null)
         bfd_fast_detect                            = try(ospf_process.bfd_fast_detect, local.defaults.iosxr.devices.configuration.routing.ospf_processes.bfd_fast_detect, null) == "enable" ? true : null
-        bfd_fast_detect_strict_mode                = try(ospf_process.bfd_fast_detect, local.defaults.iosxr.devices.configuration.routing.ospf_processes.bfd_fast_detect, null) == "strict_mode" ? true : null
+        bfd_fast_detect_strict_mode                = try(ospf_process.bfd_fast_detect, local.defaults.iosxr.devices.configuration.routing.ospf_processes.bfd_fast_detect, null) == "strict-mode" ? true : null
         bfd_minimum_interval                       = try(ospf_process.bfd_minimum_interval, local.defaults.iosxr.devices.configuration.routing.ospf_processes.bfd_minimum_interval, null)
         bfd_multiplier                             = try(ospf_process.bfd_multiplier, local.defaults.iosxr.devices.configuration.routing.ospf_processes.bfd_multiplier, null)
         security_ttl                               = try(ospf_process.security_ttl, local.defaults.iosxr.devices.configuration.routing.ospf_processes.security_ttl, null) == "enable" ? true : null
@@ -307,14 +307,14 @@ locals {
           key_id        = try(key.id, local.defaults.iosxr.devices.configuration.routing.ospf_processes.authentication.message_digest_keys.id, null)
           md5_encrypted = try(key.password, local.defaults.iosxr.devices.configuration.routing.ospf_processes.authentication.message_digest_keys.password, null)
         }]
-        authentication_message_digest             = try(ospf_process.authentication.type, local.defaults.iosxr.devices.configuration.routing.ospf_processes.authentication.type, null) == "message_digest" ? true : null
+        authentication_message_digest             = try(ospf_process.authentication.type, local.defaults.iosxr.devices.configuration.routing.ospf_processes.authentication.type, null) == "message-digest" ? true : null
         authentication_keychain                   = try(ospf_process.authentication.type, local.defaults.iosxr.devices.configuration.routing.ospf_processes.authentication.type, null) == "keychain" ? true : null
         authentication_null                       = try(ospf_process.authentication.type, local.defaults.iosxr.devices.configuration.routing.ospf_processes.authentication.type, null) == "null" ? true : null
         authentication_keychain_name              = try(ospf_process.authentication.keychain, local.defaults.iosxr.devices.configuration.routing.ospf_processes.authentication.keychain, null)
         network_broadcast                         = try(ospf_process.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.network, null) == "broadcast" ? true : null
-        network_non_broadcast                     = try(ospf_process.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.network, null) == "non_broadcast" ? true : null
-        network_point_to_point                    = try(ospf_process.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.network, null) == "point_to_point" ? true : null
-        network_point_to_multipoint               = try(ospf_process.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.network, null) == "point_to_multipoint" ? true : null
+        network_non_broadcast                     = try(ospf_process.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.network, null) == "non-broadcast" ? true : null
+        network_point_to_point                    = try(ospf_process.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.network, null) == "point-to-point" ? true : null
+        network_point_to_multipoint               = try(ospf_process.network, local.defaults.iosxr.devices.configuration.routing.ospf_processes.network, null) == "point-to-multipoint" ? true : null
         external_out_enable                       = try(ospf_process.external_out, local.defaults.iosxr.devices.configuration.routing.ospf_processes.external_out, null) == "enable" ? true : null
         external_out_disable                      = try(ospf_process.external_out, local.defaults.iosxr.devices.configuration.routing.ospf_processes.external_out, null) == "disable" ? true : null
         summary_in_enable                         = try(ospf_process.summary_in, local.defaults.iosxr.devices.configuration.routing.ospf_processes.summary_in, null) == "enable" ? true : null
