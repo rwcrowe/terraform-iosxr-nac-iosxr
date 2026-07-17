@@ -135,6 +135,7 @@ module "iosxr" {
 | [iosxr_mpls_ldp.mpls_ldp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mpls_ldp) | resource |
 | [iosxr_mpls_ldp_address_family.mpls_ldp_address_family](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mpls_ldp_address_family) | resource |
 | [iosxr_mpls_ldp_interface.mpls_ldp_interface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mpls_ldp_interface) | resource |
+| [iosxr_mpls_ldp_mldp.mpls_ldp_mldp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mpls_ldp_mldp) | resource |
 | [iosxr_mpls_oam.mpls_oam](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mpls_oam) | resource |
 | [iosxr_mpls_traffic_eng.mpls_traffic_eng](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mpls_traffic_eng) | resource |
 | [iosxr_netconf_agent_tty.netconf_agent_tty](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/netconf_agent_tty) | resource |
