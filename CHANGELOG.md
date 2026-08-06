@@ -1,6 +1,7 @@
 ## 0.2.0
 
 - BREAKING CHANGE: Remove the deprecated device-level `cli_templates` attribute. Define CLI templates via the unified `templates` structure with `type: cli`, applied by name at global/device-group/device scope
+- BREAKING CHANGE: Rename the `iosxr.devices.configuration.gnmi` data-model key to `yang` and adopt the provider `iosxr_yang` resource (previously `iosxr_gnmi`); update NAC data accordingly (requires provider >= 0.7.2)
 
 ## 0.1.1
 
