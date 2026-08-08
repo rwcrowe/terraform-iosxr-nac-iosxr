@@ -1,4 +1,4 @@
-## 0.2.0
+## Unreleased
 
 - BREAKING CHANGE: Remove the deprecated device-level `cli_templates` attribute. Define CLI templates via the unified `templates` structure with `type: cli`, applied by name at global/device-group/device scope
 - Fix: preserve newlines in multi-line CLI templates so IOS-XR submode configuration is applied correctly instead of being collapsed onto a single line (requires provider >= 0.7.2)
