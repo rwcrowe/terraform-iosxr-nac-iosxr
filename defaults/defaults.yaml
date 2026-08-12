@@ -8,11 +8,12 @@ defaults:
         interfaces:
           ethernets:
             managed: true
-            shutdown: true
+            shutdown: false
             subinterfaces:
               shutdown: false
           bundle_ethernets:
             shutdown: false
+            bundle_shutdown: false
             subinterfaces:
               shutdown: false
           bvis:
