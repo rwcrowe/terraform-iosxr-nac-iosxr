@@ -230,7 +230,6 @@ module "iosxr" {
 | [iosxr_vrf.vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/vrf) | resource |
 | [iosxr_vty_pool.vty_pool](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/vty_pool) | resource |
 | [iosxr_xml_agent.xml_agent](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/xml_agent) | resource |
-| [iosxr_yang.yang](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/yang) | resource |
 | [terraform_data.bundle_ether_flow_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [terraform_data.bundle_ether_subinterface_flow_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [terraform_data.control_plane_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
