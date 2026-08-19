@@ -190,7 +190,7 @@ resource "iosxr_cli" "cli_0" {
     iosxr_lldp.lldp,
     iosxr_linux_networking.linux_networking,
     iosxr_logging.logging,
-    iosxr_logging_link_status.logging_link_status,
+    iosxr_logging_events_link_status.logging_events_link_status,
     iosxr_logging_vrf.logging_vrf,
     iosxr_monitor_session.monitor_session,
     iosxr_mpls_ldp.mpls_ldp,

@@ -136,7 +136,7 @@ module "iosxr" {
 | [iosxr_linux_networking.linux_networking](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/linux_networking) | resource |
 | [iosxr_lldp.lldp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/lldp) | resource |
 | [iosxr_logging.logging](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/logging) | resource |
-| [iosxr_logging_link_status.logging_link_status](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/logging_link_status) | resource |
+| [iosxr_logging_events_link_status.logging_events_link_status](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/logging_events_link_status) | resource |
 | [iosxr_logging_vrf.logging_vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/logging_vrf) | resource |
 | [iosxr_mac_set.mac_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mac_set) | resource |
 | [iosxr_monitor_session.monitor_session](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/monitor_session) | resource |
