@@ -2,6 +2,9 @@
 
 - BREAKING CHANGE: Remove the deprecated device-level `cli_templates` attribute. Define CLI templates via the unified `templates` structure with `type: cli`, applied by name at global/device-group/device scope
 - Fix: preserve newlines in multi-line CLI templates so IOS-XR submode configuration is applied correctly instead of being collapsed onto a single line (requires provider >= 0.7.2)
+- BREAKING CHANGE: Consolidate L2VPN configuration under a single `l2vpn` object. Bridge domains are now nested under their parent bridge group (with `name` replacing `bridge_group_name`/`bridge_domain_name`) and pseudowire classes moved under `l2vpn`.
+- `routed_interfaces` (BVI) support added to bridge domains.
+- Fix deadlock when removing a routing set and updating the referencing route-policy in the same apply.
 
 ## 0.1.1
 
