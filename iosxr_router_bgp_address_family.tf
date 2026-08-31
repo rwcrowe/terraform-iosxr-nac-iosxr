@@ -1,4 +1,74 @@
 locals {
+  bgp_address_family_ipv4_rt_filter = flatten([
+    for device in local.devices : [
+      for bgp_process in try(local.device_config[device.name].routing.bgp, []) :
+      try(bgp_process.address_family.ipv4_rt_filter, null) != null ? [{
+        key                           = format("%s/%s/ipv4-rt-filter", device.name, bgp_process.as_number)
+        device_name                   = device.name
+        as_number                     = try(bgp_process.as_number, local.defaults.iosxr.devices.configuration.routing.bgp.as_number, null)
+        af_name                       = "ipv4-rt-filter"
+        as_path_loopcheck_out_disable = try(bgp_process.address_family.ipv4_rt_filter.as_path_loopcheck_out_disable, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.as_path_loopcheck_out_disable, null)
+        bgp_client_to_client_reflection_cluster_ids_32bit_format = try(length(bgp_process.address_family.ipv4_rt_filter.bgp_client_to_client_reflection.cluster_ids) == 0, true) ? null : [
+          for cluster in bgp_process.address_family.ipv4_rt_filter.bgp_client_to_client_reflection.cluster_ids : {
+            cluster_as = try(tonumber(cluster.id), tonumber(local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_client_to_client_reflection.cluster_ids.id), null)
+            disable    = try(cluster.disable, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_client_to_client_reflection.cluster_ids.disable, null)
+          }
+          if try(tonumber(cluster.id), tonumber(local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_client_to_client_reflection.cluster_ids.id), null) != null
+        ]
+        bgp_client_to_client_reflection_cluster_ids_ip_format = try(length(bgp_process.address_family.ipv4_rt_filter.bgp_client_to_client_reflection.cluster_ids) == 0, true) ? null : [
+          for cluster in bgp_process.address_family.ipv4_rt_filter.bgp_client_to_client_reflection.cluster_ids : {
+            cluster_ip = try(cluster.id, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_client_to_client_reflection.cluster_ids.id, null)
+            disable    = try(cluster.disable, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_client_to_client_reflection.cluster_ids.disable, null)
+          }
+          if try(tonumber(cluster.id), tonumber(local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_client_to_client_reflection.cluster_ids.id), null) == null
+        ]
+        bgp_dampening_decay_half_life                 = try(bgp_process.address_family.ipv4_rt_filter.bgp_dampening_decay_half_life, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_dampening_decay_half_life, null)
+        bgp_dampening_max_suppress_time               = try(bgp_process.address_family.ipv4_rt_filter.bgp_dampening_max_suppress_time, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_dampening_max_suppress_time, null)
+        bgp_dampening_reuse_threshold                 = try(bgp_process.address_family.ipv4_rt_filter.bgp_dampening_reuse_threshold, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_dampening_reuse_threshold, null)
+        bgp_dampening_suppress_threshold              = try(bgp_process.address_family.ipv4_rt_filter.bgp_dampening_suppress_threshold, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_dampening_suppress_threshold, null)
+        bgp_label_delay_milliseconds                  = try(bgp_process.address_family.ipv4_rt_filter.bgp_label_delay_milliseconds, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_label_delay_milliseconds, null)
+        bgp_label_delay_seconds                       = try(bgp_process.address_family.ipv4_rt_filter.bgp_label_delay_seconds, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_label_delay_seconds, null)
+        bgp_scan_time                                 = try(bgp_process.address_family.ipv4_rt_filter.bgp_scan_time, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.bgp_scan_time, null)
+        event_prefix_route_policy                     = try(bgp_process.address_family.ipv4_rt_filter.event_prefix_route_policy, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.event_prefix_route_policy, null)
+        nexthop_resolution_prefix_length_minimum_ipv4 = try(bgp_process.address_family.ipv4_rt_filter.nexthop_resolution_prefix_length_minimum_ipv4, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.nexthop_resolution_prefix_length_minimum_ipv4, null)
+        nexthop_route_policy                          = try(bgp_process.address_family.ipv4_rt_filter.nexthop_route_policy, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.nexthop_route_policy, null)
+        nexthop_trigger_delay_critical                = try(bgp_process.address_family.ipv4_rt_filter.nexthop_trigger_delay_critical, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.nexthop_trigger_delay_critical, null)
+        nexthop_trigger_delay_non_critical            = try(bgp_process.address_family.ipv4_rt_filter.nexthop_trigger_delay_non_critical, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.nexthop_trigger_delay_non_critical, null)
+        update_limit_address_family                   = try(bgp_process.address_family.ipv4_rt_filter.update_limit_address_family, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.update_limit_address_family, null)
+        update_limit_sub_group_ebgp                   = try(bgp_process.address_family.ipv4_rt_filter.update_limit_sub_group_ebgp, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.update_limit_sub_group_ebgp, null)
+        update_limit_sub_group_ibgp                   = try(bgp_process.address_family.ipv4_rt_filter.update_limit_sub_group_ibgp, local.defaults.iosxr.devices.configuration.routing.bgp.address_family.ipv4_rt_filter.update_limit_sub_group_ibgp, null)
+        }
+      ] : []
+    ]
+  ])
+}
+
+resource "iosxr_router_bgp_address_family" "ipv4_rt_filter" {
+  for_each                                                 = { for af in local.bgp_address_family_ipv4_rt_filter : af.key => af }
+  device                                                   = each.value.device_name
+  as_number                                                = each.value.as_number
+  af_name                                                  = each.value.af_name
+  as_path_loopcheck_out_disable                            = each.value.as_path_loopcheck_out_disable
+  bgp_client_to_client_reflection_cluster_ids_32bit_format = each.value.bgp_client_to_client_reflection_cluster_ids_32bit_format
+  bgp_client_to_client_reflection_cluster_ids_ip_format    = each.value.bgp_client_to_client_reflection_cluster_ids_ip_format
+  bgp_dampening_decay_half_life                            = each.value.bgp_dampening_decay_half_life
+  bgp_dampening_max_suppress_time                          = each.value.bgp_dampening_max_suppress_time
+  bgp_dampening_reuse_threshold                            = each.value.bgp_dampening_reuse_threshold
+  bgp_dampening_suppress_threshold                         = each.value.bgp_dampening_suppress_threshold
+  bgp_label_delay_milliseconds                             = each.value.bgp_label_delay_milliseconds
+  bgp_label_delay_seconds                                  = each.value.bgp_label_delay_seconds
+  bgp_scan_time                                            = each.value.bgp_scan_time
+  event_prefix_route_policy                                = each.value.event_prefix_route_policy
+  nexthop_resolution_prefix_length_minimum_ipv4            = each.value.nexthop_resolution_prefix_length_minimum_ipv4
+  nexthop_route_policy                                     = each.value.nexthop_route_policy
+  nexthop_trigger_delay_critical                           = each.value.nexthop_trigger_delay_critical
+  nexthop_trigger_delay_non_critical                       = each.value.nexthop_trigger_delay_non_critical
+  update_limit_address_family                              = each.value.update_limit_address_family
+  update_limit_sub_group_ebgp                              = each.value.update_limit_sub_group_ebgp
+  update_limit_sub_group_ibgp                              = each.value.update_limit_sub_group_ibgp
+}
+
+locals {
   bgp_address_family_ipv4_unicast = flatten([
     for device in local.devices : [
       for bgp_process in try(local.device_config[device.name].routing.bgp, []) :

@@ -160,6 +160,7 @@ module "iosxr" {
 | [iosxr_rd_set.rd_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/rd_set) | resource |
 | [iosxr_route_policy.route_policy](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/route_policy) | resource |
 | [iosxr_router_bgp.router_bgp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp) | resource |
+| [iosxr_router_bgp_address_family.ipv4_rt_filter](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_address_family) | resource |
 | [iosxr_router_bgp_address_family.ipv4_unicast](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_address_family) | resource |
 | [iosxr_router_bgp_address_family.ipv6_unicast](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_address_family) | resource |
 | [iosxr_router_bgp_address_family.l2vpn_evpn](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_address_family) | resource |
