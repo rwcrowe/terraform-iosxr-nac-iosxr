@@ -123,3 +123,33 @@ locals {
     "unknown" = "default"
   }
 }
+
+# ================
+# Multi-version
+# ================
+locals {
+  # Per-device: true if device is running 25.0 or later
+  device_is_25x = {
+    for name, info in data.iosxr_device_info.version :
+    name => provider::utils::version_compare(info.version, "25.0") >= 0
+  }
+  # Pre-defined for 26.x support — unused until 26.x attributes are added
+  # device_is_26x = {
+  #   for name, info in data.iosxr_device_info.version :
+  #   name => provider::utils::version_compare(info.version, "26.0") >= 0
+  # }
+
+  # Enum normalization maps — schema standardizes on latest when possible
+  logging_archive_severity_map = {
+    "24.4" = { warning = "warnings" }
+    "25.4" = { warning = "warning" }
+  }
+  logging_file_severity_map = {
+    "24.4" = { errors = "error", informational = "info" }
+    "25.4" = { errors = "errors", informational = "informational" }
+  }
+  logging_vrf_severity_map = {
+    "24.4" = { errors = "error", informational = "info" }
+    "25.4" = { errors = "errors", informational = "informational" }
+  }
+}

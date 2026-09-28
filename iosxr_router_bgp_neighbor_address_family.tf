@@ -199,8 +199,10 @@ resource "iosxr_router_bgp_neighbor_address_family" "router_bgp_neighbor_address
   bestpath_origin_as_allow_invalid                        = each.value.bestpath_origin_as_allow_invalid
 
   depends_on = [
+    iosxr_bmp_server.bmp_server,
     iosxr_key_chain.key_chain,
     iosxr_route_policy.route_policy,
+    iosxr_router_bgp_neighbor.router_bgp_neighbor,
     # referenced sets must exist before a route-policy is attached
     iosxr_as_path_set.as_path_set,
     iosxr_community_set.community_set,

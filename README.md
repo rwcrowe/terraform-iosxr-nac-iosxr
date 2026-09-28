@@ -106,7 +106,6 @@ module "iosxr" {
 | [iosxr_flow_sampler_map.flow_sampler_map](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/flow_sampler_map) | resource |
 | [iosxr_fpd.fpd](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/fpd) | resource |
 | [iosxr_ftp.ftp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ftp) | resource |
-| [iosxr_gnmi.gnmi](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/gnmi) | resource |
 | [iosxr_hostname.hostname](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hostname) | resource |
 | [iosxr_interface_bundle_ether.bundle_ether](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bundle_ether) | resource |
 | [iosxr_interface_bundle_ether_subinterface.bundle_ether_subinterface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bundle_ether_subinterface) | resource |
@@ -169,6 +168,7 @@ module "iosxr" {
 | [iosxr_router_bgp_address_family.vpnv6_multicast](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_address_family) | resource |
 | [iosxr_router_bgp_address_family.vpnv6_unicast](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_address_family) | resource |
 | [iosxr_router_bgp_af_group.router_bgp_af_group](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_af_group) | resource |
+| [iosxr_router_bgp_neighbor.router_bgp_neighbor](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_neighbor) | resource |
 | [iosxr_router_bgp_neighbor_address_family.router_bgp_neighbor_address_family](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_neighbor_address_family) | resource |
 | [iosxr_router_bgp_neighbor_group.router_bgp_neighbor_group](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_neighbor_group) | resource |
 | [iosxr_router_bgp_session_group.router_bgp_session_group](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_session_group) | resource |
@@ -177,6 +177,7 @@ module "iosxr" {
 | [iosxr_router_bgp_vrf_address_family.ipv4_unicast](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_vrf_address_family) | resource |
 | [iosxr_router_bgp_vrf_address_family.ipv6_multicast](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_vrf_address_family) | resource |
 | [iosxr_router_bgp_vrf_address_family.ipv6_unicast](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_vrf_address_family) | resource |
+| [iosxr_router_bgp_vrf_neighbor.router_bgp_vrf_neighbor](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_vrf_neighbor) | resource |
 | [iosxr_router_bgp_vrf_neighbor_address_family.router_bgp_vrf_neighbor_address_family](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_bgp_vrf_neighbor_address_family) | resource |
 | [iosxr_router_hsrp_interface.router_hsrp_interface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_hsrp_interface) | resource |
 | [iosxr_router_hsrp_interface_ipv4_group_v1.router_hsrp_interface_ipv4_group_v1](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_hsrp_interface_ipv4_group_v1) | resource |
@@ -229,6 +230,7 @@ module "iosxr" {
 | [iosxr_vrf.vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/vrf) | resource |
 | [iosxr_vty_pool.vty_pool](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/vty_pool) | resource |
 | [iosxr_xml_agent.xml_agent](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/xml_agent) | resource |
+| [iosxr_yang.yang](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/yang) | resource |
 | [terraform_data.bundle_ether_flow_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [terraform_data.bundle_ether_subinterface_flow_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [terraform_data.control_plane_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
@@ -236,6 +238,7 @@ module "iosxr" {
 | [terraform_data.ethernet_subinterface_flow_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [terraform_data.policy_map_pbr_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [terraform_data.segment_routing_v6_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
+| [iosxr_device_info.version](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/data-sources/device_info) | data source |
 ## Modules
 
 | Name | Source | Version |
