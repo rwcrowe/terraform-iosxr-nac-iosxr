@@ -139,6 +139,7 @@ resource "iosxr_cli" "cli_0" {
     iosxr_cdp.cdp,
     iosxr_class_map_qos.class_map_qos,
     iosxr_class_map_traffic.class_map_traffic,
+    iosxr_clock.clock,
     iosxr_community_set.community_set,
     iosxr_control_plane.control_plane,
     iosxr_domain.domain,
@@ -161,8 +162,8 @@ resource "iosxr_cli" "cli_0" {
     iosxr_flow_sampler_map.flow_sampler_map,
     iosxr_fpd.fpd,
     iosxr_ftp.ftp,
-    iosxr_yang.yang,
     iosxr_hostname.hostname,
+    iosxr_http_client.http_client,
     iosxr_interface_bundle_ether.bundle_ether,
     iosxr_interface_bundle_ether_subinterface.bundle_ether_subinterface,
     iosxr_interface_bvi.bvi,
@@ -189,6 +190,7 @@ resource "iosxr_cli" "cli_0" {
     iosxr_lldp.lldp,
     iosxr_linux_networking.linux_networking,
     iosxr_logging.logging,
+    iosxr_logging_events_link_status.logging_events_link_status,
     iosxr_logging_vrf.logging_vrf,
     iosxr_monitor_session.monitor_session,
     iosxr_mpls_ldp.mpls_ldp,
@@ -279,7 +281,8 @@ resource "iosxr_cli" "cli_0" {
     iosxr_tpa.tpa,
     iosxr_vrf.vrf,
     iosxr_vty_pool.vty_pool,
-    iosxr_xml_agent.xml_agent
+    iosxr_xml_agent.xml_agent,
+    iosxr_yang.yang
   ]
 }
 

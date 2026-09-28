@@ -84,6 +84,7 @@ module "iosxr" {
 | [iosxr_cli.cli_7](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/cli) | resource |
 | [iosxr_cli.cli_8](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/cli) | resource |
 | [iosxr_cli.cli_9](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/cli) | resource |
+| [iosxr_clock.clock](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/clock) | resource |
 | [iosxr_community_set.community_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/community_set) | resource |
 | [iosxr_control_plane.control_plane](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/control_plane) | resource |
 | [iosxr_domain.domain](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/domain) | resource |
@@ -107,6 +108,7 @@ module "iosxr" {
 | [iosxr_fpd.fpd](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/fpd) | resource |
 | [iosxr_ftp.ftp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ftp) | resource |
 | [iosxr_hostname.hostname](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hostname) | resource |
+| [iosxr_http_client.http_client](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/http_client) | resource |
 | [iosxr_interface_bundle_ether.bundle_ether](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bundle_ether) | resource |
 | [iosxr_interface_bundle_ether_subinterface.bundle_ether_subinterface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bundle_ether_subinterface) | resource |
 | [iosxr_interface_bvi.bvi](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bvi) | resource |
@@ -134,6 +136,7 @@ module "iosxr" {
 | [iosxr_linux_networking.linux_networking](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/linux_networking) | resource |
 | [iosxr_lldp.lldp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/lldp) | resource |
 | [iosxr_logging.logging](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/logging) | resource |
+| [iosxr_logging_events_link_status.logging_events_link_status](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/logging_events_link_status) | resource |
 | [iosxr_logging_vrf.logging_vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/logging_vrf) | resource |
 | [iosxr_mac_set.mac_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mac_set) | resource |
 | [iosxr_monitor_session.monitor_session](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/monitor_session) | resource |
