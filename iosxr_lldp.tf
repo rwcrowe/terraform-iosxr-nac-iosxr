@@ -15,7 +15,7 @@ resource "iosxr_lldp" "lldp" {
   chassis_id_type_interface_name         = local.device_is_25x[each.value.name] ? null : (try(local.device_config[each.value.name].lldp.chassis_id_type, local.defaults.iosxr.devices.configuration.lldp.chassis_id_type, null) == "interface-name" ? true : null)
   chassis_id_type_local                  = local.device_is_25x[each.value.name] ? null : (try(local.device_config[each.value.name].lldp.chassis_id_type, local.defaults.iosxr.devices.configuration.lldp.chassis_id_type, null) == "local" ? true : null)
   chassis_id_type                        = local.device_is_25x[each.value.name] ? try(local.device_config[each.value.name].lldp.chassis_id_type, local.defaults.iosxr.devices.configuration.lldp.chassis_id_type, null) : null
-  interface_only                         = try(local.device_config[each.value.name].lldp.interface_only, local.defaults.iosxr.devices.configuration.lldp.interface_only, null)
+  interface_only                         = local.device_is_25x[each.value.name] ? try(local.device_config[each.value.name].lldp.interface_only, local.defaults.iosxr.devices.configuration.lldp.interface_only, null) : null
   subinterfaces_enable                   = try(local.device_config[each.value.name].lldp.subinterfaces_enable, local.defaults.iosxr.devices.configuration.lldp.subinterfaces_enable, null)
   subinterfaces_tagged                   = try(local.device_config[each.value.name].lldp.subinterfaces_tagged, local.defaults.iosxr.devices.configuration.lldp.subinterfaces_tagged, null)
   priorityaddr_enable                    = try(local.device_config[each.value.name].lldp.priorityaddr_enable, local.defaults.iosxr.devices.configuration.lldp.priorityaddr_enable, null)
