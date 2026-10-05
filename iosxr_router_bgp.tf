@@ -130,6 +130,21 @@ locals {
         update_out_logging                                   = try(bgp_process.update_out_logging, local.defaults.iosxr.devices.configuration.routing.bgp.update_out_logging, null)
         bfd_multiplier                                       = try(bgp_process.bfd_multiplier, local.defaults.iosxr.devices.configuration.routing.bgp.bfd_multiplier, null)
         bfd_minimum_interval                                 = try(bgp_process.bfd_minimum_interval, local.defaults.iosxr.devices.configuration.routing.bgp.bfd_minimum_interval, null)
+        bgp_neighbor_down_fast_hold_timer                    = local.device_is_25x[device.name] ? try(bgp_process.bgp_neighbor_down_fast_hold_timer, local.defaults.iosxr.devices.configuration.routing.bgp.bgp_neighbor_down_fast_hold_timer, null) : null
+        distance_bgp_external                                = local.device_is_25x[device.name] ? try(bgp_process.distance_bgp_external, local.defaults.iosxr.devices.configuration.routing.bgp.distance_bgp_external, null) : null
+        distance_bgp_internal                                = local.device_is_25x[device.name] ? try(bgp_process.distance_bgp_internal, local.defaults.iosxr.devices.configuration.routing.bgp.distance_bgp_internal, null) : null
+        distance_bgp_local                                   = local.device_is_25x[device.name] ? try(bgp_process.distance_bgp_local, local.defaults.iosxr.devices.configuration.routing.bgp.distance_bgp_local, null) : null
+        bandwidth_groups = local.device_is_25x[device.name] ? (try(length(bgp_process.bandwidth_groups) == 0, true) ? null : [for group in bgp_process.bandwidth_groups : {
+          bandwidth_group_name = try(group.name, local.defaults.iosxr.devices.configuration.routing.bgp.bandwidth_groups.name, null)
+          bandwidth_ids = try(length(group.bandwidth_ids) == 0, true) ? null : [for bw in group.bandwidth_ids : {
+            bandwidth_id_number = try(bw.id, local.defaults.iosxr.devices.configuration.routing.bgp.bandwidth_groups.bandwidth_ids.id, null)
+            value               = try(bw.value, local.defaults.iosxr.devices.configuration.routing.bgp.bandwidth_groups.bandwidth_ids.value, null)
+            bandwidth_unit      = try(bw.unit, local.defaults.iosxr.devices.configuration.routing.bgp.bandwidth_groups.bandwidth_ids.unit, null)
+            asn                 = try(bw.asn, local.defaults.iosxr.devices.configuration.routing.bgp.bandwidth_groups.bandwidth_ids.asn, null)
+            }
+          ]
+          }
+        ]) : null
         rpki_routes = try(length(bgp_process.rpki_routes) == 0, true) ? null : [for route in bgp_process.rpki_routes : {
           route_address = try(route.prefix, local.defaults.iosxr.devices.configuration.routing.bgp.rpki_routes.prefix, null)
           route_prefix  = try(route.length, local.defaults.iosxr.devices.configuration.routing.bgp.rpki_routes.length, null)
@@ -254,6 +269,11 @@ resource "iosxr_router_bgp" "router_bgp" {
   update_out_logging                                       = each.value.update_out_logging
   bfd_multiplier                                           = each.value.bfd_multiplier
   bfd_minimum_interval                                     = each.value.bfd_minimum_interval
+  bgp_neighbor_down_fast_hold_timer                        = each.value.bgp_neighbor_down_fast_hold_timer
+  distance_bgp_external                                    = each.value.distance_bgp_external
+  distance_bgp_internal                                    = each.value.distance_bgp_internal
+  distance_bgp_local                                       = each.value.distance_bgp_local
+  bandwidth_groups                                         = each.value.bandwidth_groups
   rpki_routes                                              = each.value.rpki_routes
   rpki_servers                                             = each.value.rpki_servers
 
