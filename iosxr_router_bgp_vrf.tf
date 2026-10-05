@@ -52,6 +52,9 @@ locals {
           bgp_origin_as_validation_time                        = try(can(tonumber(vrf.bgp_origin_as_validation_time)) ? tonumber(vrf.bgp_origin_as_validation_time) : null, can(tonumber(local.defaults.iosxr.devices.configuration.routing.bgp.vrfs.bgp_origin_as_validation_time)) ? tonumber(local.defaults.iosxr.devices.configuration.routing.bgp.vrfs.bgp_origin_as_validation_time) : null, null)
           bfd_minimum_interval                                 = try(vrf.bfd_minimum_interval, local.defaults.iosxr.devices.configuration.routing.bgp.vrfs.bfd_minimum_interval, null)
           bfd_multiplier                                       = try(vrf.bfd_multiplier, local.defaults.iosxr.devices.configuration.routing.bgp.vrfs.bfd_multiplier, null)
+          distance_bgp_external                                = local.device_is_25x[device.name] ? try(vrf.distance_bgp_external, local.defaults.iosxr.devices.configuration.routing.bgp.vrfs.distance_bgp_external, null) : null
+          distance_bgp_internal                                = local.device_is_25x[device.name] ? try(vrf.distance_bgp_internal, local.defaults.iosxr.devices.configuration.routing.bgp.vrfs.distance_bgp_internal, null) : null
+          distance_bgp_local                                   = local.device_is_25x[device.name] ? try(vrf.distance_bgp_local, local.defaults.iosxr.devices.configuration.routing.bgp.vrfs.distance_bgp_local, null) : null
           rd = try(vrf.rd, local.defaults.iosxr.devices.configuration.routing.bgp.vrfs.rd, null) != null ? provider::utils::normalize_bgp_rd(
             try(vrf.rd, local.defaults.iosxr.devices.configuration.routing.bgp.vrfs.rd)
           ) : null
@@ -108,6 +111,9 @@ resource "iosxr_router_bgp_vrf" "router_bgp_vrf" {
   bgp_origin_as_validation_time                        = each.value.bgp_origin_as_validation_time
   bfd_minimum_interval                                 = each.value.bfd_minimum_interval
   bfd_multiplier                                       = each.value.bfd_multiplier
+  distance_bgp_external                                = each.value.distance_bgp_external
+  distance_bgp_internal                                = each.value.distance_bgp_internal
+  distance_bgp_local                                   = each.value.distance_bgp_local
   rd_auto                                              = try(each.value.rd.format == "auto" ? true : null, null)
   rd_two_byte_as_number                                = try(each.value.rd.format == "two_byte_as" ? each.value.rd.as_number : null, null)
   rd_two_byte_as_index                                 = try(each.value.rd.format == "two_byte_as" ? each.value.rd.assigned_number : null, null)
