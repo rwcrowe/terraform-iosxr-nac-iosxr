@@ -35,6 +35,7 @@ locals {
         attribute_acct_session_id_prepend_nas_port_id             = try(local.device_config[device.name].radius_server.attribute.acct_session_id_prepend_nas_port_id, local.defaults.iosxr.devices.configuration.radius_server.attribute.acct_session_id_prepend_nas_port_id, null)
         attribute_acct_multi_session_id_include_parent_session_id = try(local.device_config[device.name].radius_server.attribute.acct_multi_session_id_include_parent_session_id, local.defaults.iosxr.devices.configuration.radius_server.attribute.acct_multi_session_id_include_parent_session_id, null)
         attribute_filter_id_11_default_direction                  = try(local.device_config[device.name].radius_server.attribute.filter_id_11_default_direction, local.defaults.iosxr.devices.configuration.radius_server.attribute.filter_id_11_default_direction, null)
+        attribute_message_authenticator                           = local.device_is_25x[device.name] ? try(local.device_config[device.name].radius_server.attribute.message_authenticator, local.defaults.iosxr.devices.configuration.radius_server.attribute.message_authenticator, null) : null
         hosts = try(length(local.device_config[device.name].radius_server.hosts) == 0, true) ? null : [
           for idx, host in local.device_config[device.name].radius_server.hosts : {
             order                    = idx
@@ -51,6 +52,9 @@ locals {
             retransmit               = try(host.retransmit, local.defaults.iosxr.devices.configuration.radius_server.hosts.retransmit, null)
             test_username            = try(host.test_username, local.defaults.iosxr.devices.configuration.radius_server.hosts.test_username, null)
             timeout                  = try(host.timeout, local.defaults.iosxr.devices.configuration.radius_server.hosts.timeout, null)
+
+            attribute_message_authenticator_mandate  = local.device_is_25x[device.name] ? (try(host.message_authenticator, local.defaults.iosxr.devices.configuration.radius_server.hosts.message_authenticator, null) == "mandate" ? true : null) : null
+            attribute_message_authenticator_optional = local.device_is_25x[device.name] ? (try(host.message_authenticator, local.defaults.iosxr.devices.configuration.radius_server.hosts.message_authenticator, null) == "optional" ? true : null) : null
           }
         ]
         attribute_lists = try(length(local.device_config[device.name].radius_server.attribute.lists) == 0, true) ? null : [
@@ -98,6 +102,7 @@ resource "iosxr_radius_server" "radius_server" {
   attribute_acct_session_id_prepend_nas_port_id                 = each.value.attribute_acct_session_id_prepend_nas_port_id
   attribute_acct_multi_session_id_include_parent_session_id     = each.value.attribute_acct_multi_session_id_include_parent_session_id
   attribute_filter_id_11_default_direction                      = each.value.attribute_filter_id_11_default_direction
+  attribute_message_authenticator                               = each.value.attribute_message_authenticator
   hosts                                                         = each.value.hosts
   attribute_lists                                               = each.value.attribute_lists
 }
