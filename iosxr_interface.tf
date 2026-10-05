@@ -2758,6 +2758,8 @@ locals {
         ipv6_nd_redirects                    = try(bvi.ipv6.nd_redirects, local.defaults.iosxr.devices.configuration.interfaces.bvis.ipv6.nd_redirects, null)
         ipv6_nd_prefix_default_no_adv        = try(bvi.ipv6.nd_prefix_default_no_adv, local.defaults.iosxr.devices.configuration.interfaces.bvis.ipv6.nd_prefix_default_no_adv, null)
         ipv6_nd_prefix_default_no_autoconfig = try(bvi.ipv6.nd_prefix_default_no_autoconfig, local.defaults.iosxr.devices.configuration.interfaces.bvis.ipv6.nd_prefix_default_no_autoconfig, null)
+        ipv6_nd_solicited_ra                 = local.device_is_25x[device.name] ? try(bvi.ipv6.nd_solicited_ra, local.defaults.iosxr.devices.configuration.interfaces.bvis.ipv6.nd_solicited_ra, null) : null
+        ipv6_nd_unsolicited_ra_disable       = local.device_is_25x[device.name] ? try(bvi.ipv6.nd_unsolicited_ra_disable, local.defaults.iosxr.devices.configuration.interfaces.bvis.ipv6.nd_unsolicited_ra_disable, null) : null
         arp_timeout                          = try(bvi.arp_timeout, local.defaults.iosxr.devices.configuration.interfaces.bvis.arp_timeout, null)
         arp_learning_disable                 = try(bvi.arp_learning, local.defaults.iosxr.devices.configuration.interfaces.bvis.arp_learning, null) == "disable" ? true : null
         arp_learning_local                   = try(bvi.arp_learning, local.defaults.iosxr.devices.configuration.interfaces.bvis.arp_learning, null) == "local" ? true : null
@@ -2785,6 +2787,8 @@ locals {
         }]
         ptp                                              = try(bvi.ptp.enable, local.defaults.iosxr.devices.configuration.interfaces.bvis.ptp.enable, null)
         ptp_profile                                      = try(bvi.ptp.profile, local.defaults.iosxr.devices.configuration.interfaces.bvis.ptp.profile, null)
+        ptp_monitor_sender                               = local.device_is_25x[device.name] ? try(bvi.ptp.monitor_sender, local.defaults.iosxr.devices.configuration.interfaces.bvis.ptp.monitor_sender, null) : null
+        ptp_monitor_receiver                             = local.device_is_25x[device.name] ? try(bvi.ptp.monitor_receiver, local.defaults.iosxr.devices.configuration.interfaces.bvis.ptp.monitor_receiver, null) : null
         ptp_transport_ipv4                               = try(bvi.ptp.transport, local.defaults.iosxr.devices.configuration.interfaces.bvis.ptp.transport, null) == "ipv4" ? true : null
         ptp_transport_ethernet                           = try(bvi.ptp.transport, local.defaults.iosxr.devices.configuration.interfaces.bvis.ptp.transport, null) == "ethernet" ? true : null
         ptp_transport_ipv6                               = try(bvi.ptp.transport, local.defaults.iosxr.devices.configuration.interfaces.bvis.ptp.transport, null) == "ipv6" ? true : null
@@ -2906,9 +2910,12 @@ locals {
 }
 
 resource "iosxr_interface_bvi" "bvi" {
-  for_each = { for bvi in local.interfaces_bvis : bvi.key => bvi }
-  device   = each.value.device
-
+  for_each                                                  = { for bvi in local.interfaces_bvis : bvi.key => bvi }
+  device                                                    = each.value.device
+  ipv6_nd_solicited_ra                                      = each.value.ipv6_nd_solicited_ra
+  ipv6_nd_unsolicited_ra_disable                            = each.value.ipv6_nd_unsolicited_ra_disable
+  ptp_monitor_sender                                        = each.value.ptp_monitor_sender
+  ptp_monitor_receiver                                      = each.value.ptp_monitor_receiver
   name                                                      = each.value.id
   point_to_point                                            = each.value.point_to_point
   multipoint                                                = each.value.multipoint
