@@ -32,13 +32,22 @@ locals {
       mapping_prefix_sid_address_family = try(length(local.device_config[device.name].segment_routing.mapping_server) == 0, true) ? null : [
         for af in local.device_config[device.name].segment_routing.mapping_server : {
           af_name = try(af.address_family, local.defaults.iosxr.devices.configuration.segment_routing.mapping_server.address_family, null)
-          prefix_addresses = try(length(af.prefix_sid_maps) == 0, true) ? null : [
+          prefix_addresses = local.device_is_25x[device.name] ? null : try(length(af.prefix_sid_maps) == 0, true) ? null : [
             for entry in af.prefix_sid_maps : {
               address   = try(entry.prefix, local.defaults.iosxr.devices.configuration.segment_routing.mapping_server.prefix_sid_maps.prefix, null)
               length    = try(entry.length, local.defaults.iosxr.devices.configuration.segment_routing.mapping_server.prefix_sid_maps.length, null)
               sid_index = try(entry.sid_index, local.defaults.iosxr.devices.configuration.segment_routing.mapping_server.prefix_sid_maps.sid_index, null)
               range     = try(entry.range, local.defaults.iosxr.devices.configuration.segment_routing.mapping_server.prefix_sid_maps.range, null)
               attached  = try(entry.attached, local.defaults.iosxr.devices.configuration.segment_routing.mapping_server.prefix_sid_maps.attached, null)
+            }
+          ]
+          addresses = !local.device_is_25x[device.name] ? null : try(length(af.prefix_sid_maps) == 0, true) ? null : [
+            for entry in af.prefix_sid_maps : {
+              ip_address            = try(entry.prefix, local.defaults.iosxr.devices.configuration.segment_routing.mapping_server.prefix_sid_maps.prefix, null)
+              prefix                = try(entry.length, local.defaults.iosxr.devices.configuration.segment_routing.mapping_server.prefix_sid_maps.length, null)
+              start_sid_index_range = try(entry.sid_index, local.defaults.iosxr.devices.configuration.segment_routing.mapping_server.prefix_sid_maps.sid_index, null)
+              range                 = try(entry.range, local.defaults.iosxr.devices.configuration.segment_routing.mapping_server.prefix_sid_maps.range, null)
+              attached              = try(entry.attached, local.defaults.iosxr.devices.configuration.segment_routing.mapping_server.prefix_sid_maps.attached, null)
             }
           ]
         }
