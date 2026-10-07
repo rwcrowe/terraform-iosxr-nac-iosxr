@@ -133,11 +133,11 @@ locals {
     for name, info in data.iosxr_device_info.version :
     name => provider::utils::version_compare(info.version, "25.4") >= 0
   }
-  # Pre-defined for 26.x support — unused until 26.x attributes are added
-  # device_is_26x = {
-  #   for name, info in data.iosxr_device_info.version :
-  #   name => provider::utils::version_compare(info.version, "26.0") >= 0
-  # }
+  # Per-device: true if device is running 26.2 or later
+  device_is_26x = {
+    for name, info in data.iosxr_device_info.version :
+    name => provider::utils::version_compare(info.version, "26.2") >= 0
+  }
 
   # Enum normalization maps — schema standardizes on latest when possible
   logging_archive_severity_map = {
