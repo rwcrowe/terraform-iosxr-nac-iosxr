@@ -128,15 +128,16 @@ locals {
 # Multi-version
 # ================
 locals {
+  # Version is "" for unmanaged devices under auto-detect; treated as the oldest.
   # Per-device: true if device is running 25.4 or later
   device_is_25x = {
     for name, info in data.iosxr_device_info.version :
-    name => provider::utils::version_compare(info.version, "25.4") >= 0
+    name => info.version == "" ? false : provider::utils::version_compare(info.version, "25.4") >= 0
   }
   # Per-device: true if device is running 26.2 or later
   device_is_26x = {
     for name, info in data.iosxr_device_info.version :
-    name => provider::utils::version_compare(info.version, "26.2") >= 0
+    name => info.version == "" ? false : provider::utils::version_compare(info.version, "26.2") >= 0
   }
 
   # Enum normalization maps — schema standardizes on latest when possible
