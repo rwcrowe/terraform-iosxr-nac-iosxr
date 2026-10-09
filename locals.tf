@@ -128,7 +128,6 @@ locals {
 # Multi-version
 # ================
 locals {
-  # Version is "" for unmanaged devices under auto-detect; treated as the oldest.
   # Per-device: true if device is running 25.4 or later
   device_is_25x = {
     for name, info in data.iosxr_device_info.version :
@@ -140,17 +139,34 @@ locals {
     name => info.version == "" ? false : provider::utils::version_compare(info.version, "26.2") >= 0
   }
 
-  # Enum normalization maps — schema standardizes on latest when possible
-  logging_archive_severity_map = {
-    "24.4" = { warning = "warnings" }
-    "25.4" = { warning = "warning" }
+  device_version = { for name, info in data.iosxr_device_info.version : name => info.version }
+
+  # Device-side enum values by release; each release lists only what changed in it.
+  version_keyed_maps = {
+    logging_archive_severity = {
+      "24.4" = { warning = "warnings" }
+      "25.4" = { warning = "warning" }
+    }
+    logging_file_severity = {
+      "24.4" = { errors = "error", informational = "info" }
+      "25.4" = { errors = "errors", informational = "informational" }
+    }
+    logging_vrf_severity = {
+      "24.4" = { errors = "error", informational = "info" }
+      "25.4" = { errors = "errors", informational = "informational" }
+    }
   }
-  logging_file_severity_map = {
-    "24.4" = { errors = "error", informational = "info" }
-    "25.4" = { errors = "errors", informational = "informational" }
-  }
-  logging_vrf_severity_map = {
-    "24.4" = { errors = "error", informational = "info" }
-    "25.4" = { errors = "errors", informational = "informational" }
+
+  # Per map and device: merge releases at or below the device version, later wins.
+  # The lowest release always applies, so empty and below-lowest versions use it.
+  version_resolved = {
+    for map_name, releases in local.version_keyed_maps : map_name => {
+      for device, v in local.device_version : device => merge([
+        for release, entries in releases : {
+          for value, mapped in entries : value => mapped
+          if release == sort(keys(releases))[0] ? true : (v == "" ? false : provider::utils::version_compare(v, release) >= 0)
+        }
+      ]...)
+    }
   }
 }

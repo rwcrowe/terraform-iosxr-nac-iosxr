@@ -10,7 +10,7 @@ resource "iosxr_logging" "logging" {
   archive_frequency        = local.device_is_25x[each.value.name] ? try(local.device_config[each.value.name].logging.archive.frequency, local.defaults.iosxr.devices.configuration.logging.archive.frequency, null) : null
   archive_length           = try(local.device_config[each.value.name].logging.archive.length, local.defaults.iosxr.devices.configuration.logging.archive.length, null)
   archive_severity = try(lookup(
-    local.logging_archive_severity_map[local.device_is_25x[each.value.name] ? "25.4" : "24.4"],
+    local.version_resolved.logging_archive_severity[each.value.name],
     try(local.device_config[each.value.name].logging.archive.severity, local.defaults.iosxr.devices.configuration.logging.archive.severity, null),
     try(local.device_config[each.value.name].logging.archive.severity, local.defaults.iosxr.devices.configuration.logging.archive.severity, null)
   ), null)
@@ -106,7 +106,7 @@ resource "iosxr_logging" "logging" {
       path        = try(file.path, local.defaults.iosxr.devices.configuration.logging.files.path, null)
       maxfilesize = try(file.maxfilesize, local.defaults.iosxr.devices.configuration.logging.files.maxfilesize, null)
       severity = try(lookup(
-        local.logging_file_severity_map[local.device_is_25x[each.value.name] ? "25.4" : "24.4"],
+        local.version_resolved.logging_file_severity[each.value.name],
         file.severity, file.severity
       ), local.defaults.iosxr.devices.configuration.logging.files.severity, null)
       local_accounting_send_to_remote_facility_level = try(file.accounting_remote_facility, local.defaults.iosxr.devices.configuration.logging.files.accounting_remote_facility, null)
@@ -179,7 +179,7 @@ locals {
           ]) == 0, true) ? null : [for h in try(local.device_config[device.name].logging.hosts, []) : {
           name = try(h.address, local.defaults.iosxr.devices.configuration.logging.hosts.address, null)
           severity = try(lookup(
-            local.logging_vrf_severity_map[local.device_is_25x[device.name] ? "25.4" : "24.4"],
+            local.version_resolved.logging_vrf_severity[device.name],
             h.severity, h.severity
           ), local.defaults.iosxr.devices.configuration.logging.hosts.severity, null)
           port = local.device_is_25x[device.name] ? null : (
@@ -208,7 +208,7 @@ locals {
           for h in try(local.device_config[device.name].logging.hosts, []) : {
             ipv4_address = try(h.address, local.defaults.iosxr.devices.configuration.logging.hosts.address, null)
             severity = try(lookup(
-              local.logging_vrf_severity_map[local.device_is_25x[device.name] ? "25.4" : "24.4"],
+              local.version_resolved.logging_vrf_severity[device.name],
               h.severity, h.severity
             ), local.defaults.iosxr.devices.configuration.logging.hosts.severity, null)
             port = local.device_is_25x[device.name] ? null : (
@@ -236,7 +236,7 @@ locals {
           for h in try(local.device_config[device.name].logging.hosts, []) : {
             ipv6_address = try(h.address, local.defaults.iosxr.devices.configuration.logging.hosts.address, null)
             severity = try(lookup(
-              local.logging_vrf_severity_map[local.device_is_25x[device.name] ? "25.4" : "24.4"],
+              local.version_resolved.logging_vrf_severity[device.name],
               h.severity, h.severity
             ), local.defaults.iosxr.devices.configuration.logging.hosts.severity, null)
             port = local.device_is_25x[device.name] ? null : (
