@@ -157,14 +157,25 @@ locals {
     }
   }
 
+  # Per map: release keys in ascending numeric order ("25.4" before "25.10").
+  # Each key is padded to "<major><minor>|<release>" so a plain sort orders it numerically.
+  release_order = {
+    for map_name, releases in local.version_keyed_maps : map_name => [
+      for k in sort([
+        for r in keys(releases) :
+        format("%04d%04d|%s", tonumber(split(".", r)[0]), tonumber(split(".", r)[1]), r)
+      ]) : split("|", k)[1]
+    ]
+  }
+
   # Per map and device: merge releases at or below the device version, later wins.
   # The lowest release always applies, so empty and below-lowest versions use it.
   version_resolved = {
     for map_name, releases in local.version_keyed_maps : map_name => {
       for device, v in local.device_version : device => merge([
-        for release, entries in releases : {
-          for value, mapped in entries : value => mapped
-          if release == sort(keys(releases))[0] ? true : (v == "" ? false : provider::utils::version_compare(v, release) >= 0)
+        for release in local.release_order[map_name] : {
+          for value, mapped in releases[release] : value => mapped
+          if release == local.release_order[map_name][0] ? true : (v == "" ? false : provider::utils::version_compare(v, release) >= 0)
         }
       ]...)
     }
