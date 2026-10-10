@@ -34,11 +34,6 @@ locals {
 }
 
 resource "iosxr_tpa" "tpa" {
-  # Pattern J (resource-level removal, DESTRUCTIVE): the entire iosxr_tpa resource is removed as
-  # of 25.4 (resource-level "legacy: true" in the provider definition) -- guard the for_each so
-  # this resource is never even created for a 25.4+ device, rather than letting the provider
-  # hard-fail Create()/Update() with a version-constraint error at apply time. See
-  # terraform-delta-changes.md's Pattern J standard.
   for_each                    = { for tpa in local.tpa : tpa.key => tpa if !local.device_is_25x[tpa.device_name] }
   device                      = each.value.device_name
   statistics_update_frequency = each.value.statistics_update_frequency
