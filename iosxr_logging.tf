@@ -107,8 +107,9 @@ resource "iosxr_logging" "logging" {
       maxfilesize = try(file.maxfilesize, local.defaults.iosxr.devices.configuration.logging.files.maxfilesize, null)
       severity = try(lookup(
         local.version_resolved.logging_file_severity[each.value.name],
-        file.severity, file.severity
-      ), local.defaults.iosxr.devices.configuration.logging.files.severity, null)
+        try(file.severity, local.defaults.iosxr.devices.configuration.logging.files.severity, null),
+        try(file.severity, local.defaults.iosxr.devices.configuration.logging.files.severity, null)
+      ), null)
       local_accounting_send_to_remote_facility_level = try(file.accounting_remote_facility, local.defaults.iosxr.devices.configuration.logging.files.accounting_remote_facility, null)
       discriminator_match1                           = try(file.discriminator_match1, local.defaults.iosxr.devices.configuration.logging.files.discriminator_match1, null)
       discriminator_match2                           = try(file.discriminator_match2, local.defaults.iosxr.devices.configuration.logging.files.discriminator_match2, null)
@@ -180,8 +181,9 @@ locals {
           name = try(h.address, local.defaults.iosxr.devices.configuration.logging.hosts.address, null)
           severity = try(lookup(
             local.version_resolved.logging_vrf_severity[device.name],
-            h.severity, h.severity
-          ), local.defaults.iosxr.devices.configuration.logging.hosts.severity, null)
+            try(h.severity, local.defaults.iosxr.devices.configuration.logging.hosts.severity, null),
+            try(h.severity, local.defaults.iosxr.devices.configuration.logging.hosts.severity, null)
+          ), null)
           port = local.device_is_25x[device.name] ? null : (
             can(tonumber(try(h.port, local.defaults.iosxr.devices.configuration.logging.hosts.port, null))) ?
             tonumber(try(h.port, local.defaults.iosxr.devices.configuration.logging.hosts.port, null)) : null
@@ -209,8 +211,9 @@ locals {
             ipv4_address = try(h.address, local.defaults.iosxr.devices.configuration.logging.hosts.address, null)
             severity = try(lookup(
               local.version_resolved.logging_vrf_severity[device.name],
-              h.severity, h.severity
-            ), local.defaults.iosxr.devices.configuration.logging.hosts.severity, null)
+              try(h.severity, local.defaults.iosxr.devices.configuration.logging.hosts.severity, null),
+              try(h.severity, local.defaults.iosxr.devices.configuration.logging.hosts.severity, null)
+            ), null)
             port = local.device_is_25x[device.name] ? null : (
               can(tonumber(try(h.port, local.defaults.iosxr.devices.configuration.logging.hosts.port, null))) ?
               tonumber(try(h.port, local.defaults.iosxr.devices.configuration.logging.hosts.port, null)) : null
@@ -237,8 +240,9 @@ locals {
             ipv6_address = try(h.address, local.defaults.iosxr.devices.configuration.logging.hosts.address, null)
             severity = try(lookup(
               local.version_resolved.logging_vrf_severity[device.name],
-              h.severity, h.severity
-            ), local.defaults.iosxr.devices.configuration.logging.hosts.severity, null)
+              try(h.severity, local.defaults.iosxr.devices.configuration.logging.hosts.severity, null),
+              try(h.severity, local.defaults.iosxr.devices.configuration.logging.hosts.severity, null)
+            ), null)
             port = local.device_is_25x[device.name] ? null : (
               can(tonumber(try(h.port, local.defaults.iosxr.devices.configuration.logging.hosts.port, null))) ?
               tonumber(try(h.port, local.defaults.iosxr.devices.configuration.logging.hosts.port, null)) : null
