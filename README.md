@@ -108,6 +108,7 @@ module "iosxr" {
 | [iosxr_flow_sampler_map.flow_sampler_map](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/flow_sampler_map) | resource |
 | [iosxr_fpd.fpd](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/fpd) | resource |
 | [iosxr_ftp.ftp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ftp) | resource |
+| [iosxr_grpc.grpc](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/grpc) | resource |
 | [iosxr_hostname.hostname](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hostname) | resource |
 | [iosxr_http_client.http_client](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/http_client) | resource |
 | [iosxr_interface_bundle_ether.bundle_ether](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bundle_ether) | resource |

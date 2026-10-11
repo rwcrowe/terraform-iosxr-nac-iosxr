@@ -8,6 +8,7 @@
 - BREAKING CHANGE: Extract BGP neighbors into standalone `iosxr_router_bgp_neighbor` and `iosxr_router_bgp_vrf_neighbor` modules to resolve a circular dependency.
 - `clock` support added for `timezone`.
 - `http_client` support added.
+- `grpc` support added.
 - `logging` support added for `events.link_status`.
 - `mpls_ldp` support added for `neighbor_password_encrypted`.
 - `policy_maps` classes support added for `random_detect_ecn`.
