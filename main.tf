@@ -151,6 +151,7 @@ resource "iosxr_cli" "cli_0" {
     iosxr_evpn.evpn,
     iosxr_evpn_evi.evpn_evi,
     iosxr_evpn_interface.evpn_interface,
+    iosxr_evpn_segment_routing_srv6_evi.evpn_segment_routing_srv6_evi,
     iosxr_extcommunity_bandwidth_set.extcommunity_bandwidth_set,
     iosxr_extcommunity_cost_set.extcommunity_cost_set,
     iosxr_extcommunity_evpn_link_bandwidth_set.extcommunity_evpn_link_bandwidth_set,

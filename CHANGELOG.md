@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `evpn` support added for `evis_srv6` (EVPN SRv6 EVIs), including the release-dependent locator handling (a list on 24.4, a single locator from 25.4)
 - Add multi-version support for IOS-XR 24.4.2, 25.4.2 and 26.2.1. The module reads the IOS-XR version of each device with the `iosxr_device_info` data source
 - BREAKING CHANGE: Remove the deprecated device-level `cli_templates` attribute. Define CLI templates via the unified `templates` structure with `type: cli`, applied by name at global/device-group/device scope
 - Fix: preserve newlines in multi-line CLI templates so IOS-XR submode configuration is applied correctly instead of being collapsed onto a single line

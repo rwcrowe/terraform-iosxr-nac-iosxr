@@ -96,6 +96,7 @@ module "iosxr" {
 | [iosxr_evpn.evpn](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/evpn) | resource |
 | [iosxr_evpn_evi.evpn_evi](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/evpn_evi) | resource |
 | [iosxr_evpn_interface.evpn_interface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/evpn_interface) | resource |
+| [iosxr_evpn_segment_routing_srv6_evi.evpn_segment_routing_srv6_evi](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/evpn_segment_routing_srv6_evi) | resource |
 | [iosxr_extcommunity_bandwidth_set.extcommunity_bandwidth_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/extcommunity_bandwidth_set) | resource |
 | [iosxr_extcommunity_cost_set.extcommunity_cost_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/extcommunity_cost_set) | resource |
 | [iosxr_extcommunity_evpn_link_bandwidth_set.extcommunity_evpn_link_bandwidth_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/extcommunity_evpn_link_bandwidth_set) | resource |
