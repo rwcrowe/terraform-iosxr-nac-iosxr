@@ -184,6 +184,7 @@ resource "iosxr_cli" "cli_0" {
     iosxr_l2vpn.l2vpn,
     iosxr_l2vpn_bridge_group_bridge_domain.l2vpn_bridge_group_bridge_domain,
     iosxr_l2vpn_pw_class.l2vpn_pw_class,
+    iosxr_l2vpn_xconnect_group.l2vpn_xconnect_group,
     iosxr_lacp.lacp,
     iosxr_large_community_set.large_community_set,
     iosxr_line_console.line_console,

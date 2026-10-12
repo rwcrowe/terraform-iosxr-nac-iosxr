@@ -131,6 +131,7 @@ module "iosxr" {
 | [iosxr_l2vpn.l2vpn](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/l2vpn) | resource |
 | [iosxr_l2vpn_bridge_group_bridge_domain.l2vpn_bridge_group_bridge_domain](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/l2vpn_bridge_group_bridge_domain) | resource |
 | [iosxr_l2vpn_pw_class.l2vpn_pw_class](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/l2vpn_pw_class) | resource |
+| [iosxr_l2vpn_xconnect_group.l2vpn_xconnect_group](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/l2vpn_xconnect_group) | resource |
 | [iosxr_lacp.lacp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/lacp) | resource |
 | [iosxr_large_community_set.large_community_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/large_community_set) | resource |
 | [iosxr_line_console.line_console](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/line_console) | resource |

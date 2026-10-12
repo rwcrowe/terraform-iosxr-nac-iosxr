@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `l2vpn` support added for `xconnect_groups` (point-to-point cross-connects over IPv4, IPv6, EVPN and EVPN SRv6 neighbors; an EVPN neighbor with `segment_routing_srv6` is applied as the SRv6 form)
 - `evpn` support added for `evis_srv6` (EVPN SRv6 EVIs), including the release-dependent locator handling (a list on 24.4, a single locator from 25.4)
 - Add multi-version support for IOS-XR 24.4.2, 25.4.2 and 26.2.1. The module reads the IOS-XR version of each device with the `iosxr_device_info` data source
 - BREAKING CHANGE: Remove the deprecated device-level `cli_templates` attribute. Define CLI templates via the unified `templates` structure with `type: cli`, applied by name at global/device-group/device scope

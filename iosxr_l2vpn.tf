@@ -156,3 +156,107 @@ resource "iosxr_l2vpn_pw_class" "l2vpn_pw_class" {
     iosxr_l2vpn.l2vpn
   ]
 }
+
+##### L2VPN Xconnect Group #####
+
+locals {
+  l2vpn_xconnect_group = flatten([
+    for device in local.devices : [
+      for xconnect_group in try(local.device_config[device.name].l2vpn.xconnect_groups, []) : {
+        key         = format("%s/%s", device.name, xconnect_group.name)
+        device_name = device.name
+        group_name  = try(xconnect_group.name, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.name, null)
+        p2ps = try(length(xconnect_group.p2ps) == 0, true) ? null : [for p2p in xconnect_group.p2ps : {
+          p2p_xconnect_name     = try(p2p.name, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.name, null)
+          description           = try(p2p.description, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.description, null)
+          interworking_ipv4     = try(p2p.interworking, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.interworking, null) == "ipv4" ? true : null
+          interworking_ethernet = try(p2p.interworking, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.interworking, null) == "ethernet" ? true : null
+          interfaces = try(length(p2p.interfaces) == 0, true) ? null : [for interface in p2p.interfaces : {
+            interface_name = try(interface.name, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.interfaces.name, null)
+            }
+          ]
+          backup_interfaces = try(length(p2p.backup_interfaces) == 0, true) ? null : [for backup_interface in p2p.backup_interfaces : {
+            interface_name = try(backup_interface.name, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.backup_interfaces.name, null)
+            }
+          ]
+          ipv4_neighbors = try(length(p2p.ipv4_neighbors) == 0, true) ? null : [for ipv4_neighbor in p2p.ipv4_neighbors : {
+            address                  = try(ipv4_neighbor.address, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv4_neighbors.address, null)
+            pw_id                    = try(ipv4_neighbor.pw_id, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv4_neighbors.pw_id, null)
+            pw_class                 = try(ipv4_neighbor.pw_class, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv4_neighbors.pw_class, null)
+            bandwidth                = try(ipv4_neighbor.bandwidth, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv4_neighbors.bandwidth, null)
+            mpls_static_label_local  = try(ipv4_neighbor.mpls_static_label_local, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv4_neighbors.mpls_static_label_local, null)
+            mpls_static_label_remote = try(ipv4_neighbor.mpls_static_label_remote, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv4_neighbors.mpls_static_label_remote, null)
+            tag_impose_vlan          = try(ipv4_neighbor.tag_impose_vlan, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv4_neighbors.tag_impose_vlan, null)
+            backup_neighbors = try(length(ipv4_neighbor.backup_neighbors) == 0, true) ? null : [for backup_neighbor in ipv4_neighbor.backup_neighbors : {
+              address                  = try(backup_neighbor.address, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv4_neighbors.backup_neighbors.address, null)
+              pw_id                    = try(backup_neighbor.pw_id, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv4_neighbors.backup_neighbors.pw_id, null)
+              pw_class                 = try(backup_neighbor.pw_class, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv4_neighbors.backup_neighbors.pw_class, null)
+              mpls_static_label_local  = try(backup_neighbor.mpls_static_label_local, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv4_neighbors.backup_neighbors.mpls_static_label_local, null)
+              mpls_static_label_remote = try(backup_neighbor.mpls_static_label_remote, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv4_neighbors.backup_neighbors.mpls_static_label_remote, null)
+              }
+            ]
+            }
+          ]
+          ipv6_neighbors = try(length(p2p.ipv6_neighbors) == 0, true) ? null : [for ipv6_neighbor in p2p.ipv6_neighbors : {
+            address                  = try(ipv6_neighbor.address, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv6_neighbors.address, null)
+            pw_id                    = try(ipv6_neighbor.pw_id, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv6_neighbors.pw_id, null)
+            pw_class                 = try(ipv6_neighbor.pw_class, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv6_neighbors.pw_class, null)
+            source_ipv6_address      = try(ipv6_neighbor.source_ipv6_address, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv6_neighbors.source_ipv6_address, null)
+            mpls_static_label_local  = try(ipv6_neighbor.mpls_static_label_local, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv6_neighbors.mpls_static_label_local, null)
+            mpls_static_label_remote = try(ipv6_neighbor.mpls_static_label_remote, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv6_neighbors.mpls_static_label_remote, null)
+            tag_impose_vlan          = try(ipv6_neighbor.tag_impose_vlan, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv6_neighbors.tag_impose_vlan, null)
+            backup_neighbors = try(length(ipv6_neighbor.backup_neighbors) == 0, true) ? null : [for backup_neighbor in ipv6_neighbor.backup_neighbors : {
+              address                  = try(backup_neighbor.address, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv6_neighbors.backup_neighbors.address, null)
+              pw_id                    = try(backup_neighbor.pw_id, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv6_neighbors.backup_neighbors.pw_id, null)
+              pw_class                 = try(backup_neighbor.pw_class, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv6_neighbors.backup_neighbors.pw_class, null)
+              mpls_static_label_local  = try(backup_neighbor.mpls_static_label_local, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv6_neighbors.backup_neighbors.mpls_static_label_local, null)
+              mpls_static_label_remote = try(backup_neighbor.mpls_static_label_remote, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.ipv6_neighbors.backup_neighbors.mpls_static_label_remote, null)
+              }
+            ]
+            }
+          ]
+          # EVPN neighbors: an entry with segment_routing_srv6 goes to the provider's segment routing list
+          evpn_target_neighbors = length([for evpn_neighbor in try(p2p.evpn_target_neighbors, []) : evpn_neighbor if try(evpn_neighbor.segment_routing_srv6, null) == null]) == 0 ? null : [for evpn_neighbor in try(p2p.evpn_target_neighbors, []) : {
+            vpn_id       = try(evpn_neighbor.vpn_id, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_target_neighbors.vpn_id, null)
+            remote_ac_id = try(evpn_neighbor.remote_ac_id, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_target_neighbors.remote_ac_id, null)
+            source       = try(evpn_neighbor.source, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_target_neighbors.source, null)
+            pw_class     = try(evpn_neighbor.pw_class, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_target_neighbors.pw_class, null)
+          } if try(evpn_neighbor.segment_routing_srv6, null) == null]
+          evpn_target_neighbors_segment_routing = length([for evpn_neighbor in try(p2p.evpn_target_neighbors, []) : evpn_neighbor if try(evpn_neighbor.segment_routing_srv6, null) != null]) == 0 ? null : [for evpn_neighbor in try(p2p.evpn_target_neighbors, []) : {
+            vpn_id                       = try(evpn_neighbor.vpn_id, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_target_neighbors.vpn_id, null)
+            remote_ac_id                 = try(evpn_neighbor.remote_ac_id, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_target_neighbors.remote_ac_id, null)
+            source                       = try(evpn_neighbor.source, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_target_neighbors.source, null)
+            segment_routing_srv6_locator = try(evpn_neighbor.segment_routing_srv6.locator, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_target_neighbors.segment_routing_srv6.locator, null)
+          } if try(evpn_neighbor.segment_routing_srv6, null) != null]
+          evpn_service_neighbors = length([for evpn_neighbor in try(p2p.evpn_service_neighbors, []) : evpn_neighbor if try(evpn_neighbor.segment_routing_srv6, null) == null]) == 0 ? null : [for evpn_neighbor in try(p2p.evpn_service_neighbors, []) : {
+            vpn_id     = try(evpn_neighbor.vpn_id, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_service_neighbors.vpn_id, null)
+            service_id = try(evpn_neighbor.service_id, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_service_neighbors.service_id, null)
+            pw_class   = try(evpn_neighbor.pw_class, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_service_neighbors.pw_class, null)
+          } if try(evpn_neighbor.segment_routing_srv6, null) == null]
+          evpn_service_neighbors_segment_routing = length([for evpn_neighbor in try(p2p.evpn_service_neighbors, []) : evpn_neighbor if try(evpn_neighbor.segment_routing_srv6, null) != null]) == 0 ? null : [for evpn_neighbor in try(p2p.evpn_service_neighbors, []) : {
+            vpn_id                       = try(evpn_neighbor.vpn_id, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_service_neighbors.vpn_id, null)
+            service_id                   = try(evpn_neighbor.service_id, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_service_neighbors.service_id, null)
+            segment_routing_srv6_locator = try(evpn_neighbor.segment_routing_srv6.locator, local.defaults.iosxr.devices.configuration.l2vpn.xconnect_groups.p2ps.evpn_service_neighbors.segment_routing_srv6.locator, null)
+          } if try(evpn_neighbor.segment_routing_srv6, null) != null]
+          }
+        ]
+      }
+    ]
+  ])
+}
+
+resource "iosxr_l2vpn_xconnect_group" "l2vpn_xconnect_group" {
+  for_each   = { for item in local.l2vpn_xconnect_group : item.key => item }
+  device     = each.value.device_name
+  group_name = each.value.group_name
+  p2ps       = each.value.p2ps
+
+  depends_on = [
+    iosxr_l2vpn.l2vpn,
+    iosxr_l2vpn_pw_class.l2vpn_pw_class,
+    iosxr_interface_bundle_ether.bundle_ether,
+    iosxr_interface_bundle_ether_subinterface.bundle_ether_subinterface,
+    iosxr_interface_ethernet.ethernet,
+    iosxr_interface_ethernet_subinterface.ethernet_subinterface
+  ]
+}
