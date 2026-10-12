@@ -257,6 +257,7 @@ resource "iosxr_l2vpn_xconnect_group" "l2vpn_xconnect_group" {
     iosxr_interface_bundle_ether.bundle_ether,
     iosxr_interface_bundle_ether_subinterface.bundle_ether_subinterface,
     iosxr_interface_ethernet.ethernet,
-    iosxr_interface_ethernet_subinterface.ethernet_subinterface
+    iosxr_interface_ethernet_subinterface.ethernet_subinterface,
+    iosxr_segment_routing_v6.segment_routing_v6
   ]
 }

@@ -155,6 +155,12 @@ module "iosxr" {
 | [iosxr_ntp.ntp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ntp) | resource |
 | [iosxr_ospf_area_set.ospf_area_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ospf_area_set) | resource |
 | [iosxr_pce.pce](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/pce) | resource |
+| [iosxr_performance_measurement.performance_measurement](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/performance_measurement) | resource |
+| [iosxr_performance_measurement_delay_profile.performance_measurement_delay_profile](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/performance_measurement_delay_profile) | resource |
+| [iosxr_performance_measurement_endpoint_ipv4.performance_measurement_endpoint_ipv4](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/performance_measurement_endpoint_ipv4) | resource |
+| [iosxr_performance_measurement_endpoint_ipv6.performance_measurement_endpoint_ipv6](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/performance_measurement_endpoint_ipv6) | resource |
+| [iosxr_performance_measurement_interface.performance_measurement_interface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/performance_measurement_interface) | resource |
+| [iosxr_performance_measurement_liveness_profile.performance_measurement_liveness_profile](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/performance_measurement_liveness_profile) | resource |
 | [iosxr_policy_global_set.policy_global_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/policy_global_set) | resource |
 | [iosxr_policy_map_pbr.policy_map_pbr](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/policy_map_pbr) | resource |
 | [iosxr_policy_map_qos.policy_map_qos](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/policy_map_qos) | resource |
