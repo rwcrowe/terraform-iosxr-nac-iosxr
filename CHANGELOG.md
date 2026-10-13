@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `call_home` support added
 - `performance_measurement` support added
 - `l2vpn` support added for `xconnect_groups`
 - `evpn` support added for `evis_srv6`
