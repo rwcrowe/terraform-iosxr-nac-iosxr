@@ -292,6 +292,7 @@ resource "iosxr_cli" "cli_0" {
     iosxr_telemetry_model_driven.telemetry_model_driven,
     iosxr_telnet.telnet,
     iosxr_tpa.tpa,
+    iosxr_track.track,
     iosxr_vrf.vrf,
     iosxr_vty_pool.vty_pool,
     iosxr_xml_agent.xml_agent,

@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `track` support added
 - `ipsla` support added
 - `call_home` support added
 - `performance_measurement` support added
