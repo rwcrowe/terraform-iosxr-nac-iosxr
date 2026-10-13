@@ -113,6 +113,9 @@ module "iosxr" {
 | [iosxr_grpc.grpc](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/grpc) | resource |
 | [iosxr_hostname.hostname](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hostname) | resource |
 | [iosxr_http_client.http_client](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/http_client) | resource |
+| [iosxr_hw_module_profile.hw_module_profile](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hw_module_profile) | resource |
+| [iosxr_hw_module_profile_8000.hw_module_profile_8000](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hw_module_profile_8000) | resource |
+| [iosxr_hw_module_shutdown.hw_module_shutdown](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hw_module_shutdown) | resource |
 | [iosxr_interface_bundle_ether.bundle_ether](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bundle_ether) | resource |
 | [iosxr_interface_bundle_ether_subinterface.bundle_ether_subinterface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bundle_ether_subinterface) | resource |
 | [iosxr_interface_bvi.bvi](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bvi) | resource |

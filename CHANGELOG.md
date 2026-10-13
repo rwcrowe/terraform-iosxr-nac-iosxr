@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `hw_module` support added
 - `track` support added
 - `ipsla` support added
 - `call_home` support added
