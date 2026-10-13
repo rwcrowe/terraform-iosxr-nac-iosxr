@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `ipsla` support added
 - `call_home` support added
 - `performance_measurement` support added
 - `l2vpn` support added for `xconnect_groups`

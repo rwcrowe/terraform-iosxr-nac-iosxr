@@ -122,6 +122,8 @@ module "iosxr" {
 | [iosxr_interface_loopback.loopback](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_loopback) | resource |
 | [iosxr_interface_tunnel_ip.tunnel_ip](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_tunnel_ip) | resource |
 | [iosxr_interface_tunnel_te.tunnel_te](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_tunnel_te) | resource |
+| [iosxr_ipsla.ipsla](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ipsla) | resource |
+| [iosxr_ipsla_responder.ipsla_responder](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ipsla_responder) | resource |
 | [iosxr_ipv4_access_list.ipv4_access_list](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ipv4_access_list) | resource |
 | [iosxr_ipv4_access_list_options.ipv4_access_list_options](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ipv4_access_list_options) | resource |
 | [iosxr_ipv4_prefix_list.ipv4_prefix_list](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ipv4_prefix_list) | resource |

@@ -177,6 +177,8 @@ resource "iosxr_cli" "cli_0" {
     iosxr_interface_loopback.loopback,
     iosxr_interface_tunnel_ip.tunnel_ip,
     iosxr_interface_tunnel_te.tunnel_te,
+    iosxr_ipsla.ipsla,
+    iosxr_ipsla_responder.ipsla_responder,
     iosxr_ipv4_access_list_options.ipv4_access_list_options,
     iosxr_ipv4_prefix_list.ipv4_prefix_list,
     iosxr_ipv6_prefix_list.ipv6_prefix_list,
