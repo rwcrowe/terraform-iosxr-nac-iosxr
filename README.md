@@ -151,6 +151,8 @@ module "iosxr" {
 | [iosxr_logging_events_link_status.logging_events_link_status](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/logging_events_link_status) | resource |
 | [iosxr_logging_vrf.logging_vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/logging_vrf) | resource |
 | [iosxr_mac_set.mac_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mac_set) | resource |
+| [iosxr_macsec.macsec](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/macsec) | resource |
+| [iosxr_macsec_policy.macsec_policy](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/macsec_policy) | resource |
 | [iosxr_monitor_session.monitor_session](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/monitor_session) | resource |
 | [iosxr_mpls_ldp.mpls_ldp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mpls_ldp) | resource |
 | [iosxr_mpls_ldp_address_family.mpls_ldp_address_family](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mpls_ldp_address_family) | resource |

@@ -204,6 +204,8 @@ resource "iosxr_cli" "cli_0" {
     iosxr_logging.logging,
     iosxr_logging_events_link_status.logging_events_link_status,
     iosxr_logging_vrf.logging_vrf,
+    iosxr_macsec.macsec,
+    iosxr_macsec_policy.macsec_policy,
     iosxr_monitor_session.monitor_session,
     iosxr_mpls_ldp.mpls_ldp,
     iosxr_mpls_ldp_address_family.mpls_ldp_address_family,

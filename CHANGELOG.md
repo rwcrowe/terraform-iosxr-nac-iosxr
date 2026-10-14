@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `macsec` support added
 - `icmp` support added
 - `ipv6` support added
 - `hw_module` support added
