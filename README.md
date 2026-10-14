@@ -116,6 +116,7 @@ module "iosxr" {
 | [iosxr_hw_module_profile.hw_module_profile](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hw_module_profile) | resource |
 | [iosxr_hw_module_profile_8000.hw_module_profile_8000](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hw_module_profile_8000) | resource |
 | [iosxr_hw_module_shutdown.hw_module_shutdown](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hw_module_shutdown) | resource |
+| [iosxr_icmp.icmp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/icmp) | resource |
 | [iosxr_interface_bundle_ether.bundle_ether](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bundle_ether) | resource |
 | [iosxr_interface_bundle_ether_subinterface.bundle_ether_subinterface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bundle_ether_subinterface) | resource |
 | [iosxr_interface_bvi.bvi](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bvi) | resource |
@@ -130,6 +131,7 @@ module "iosxr" {
 | [iosxr_ipv4_access_list.ipv4_access_list](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ipv4_access_list) | resource |
 | [iosxr_ipv4_access_list_options.ipv4_access_list_options](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ipv4_access_list_options) | resource |
 | [iosxr_ipv4_prefix_list.ipv4_prefix_list](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ipv4_prefix_list) | resource |
+| [iosxr_ipv6.ipv6](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ipv6) | resource |
 | [iosxr_ipv6_access_list.ipv6_access_list](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ipv6_access_list) | resource |
 | [iosxr_ipv6_access_list_options.ipv6_access_list_options](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ipv6_access_list_options) | resource |
 | [iosxr_ipv6_prefix_list.ipv6_prefix_list](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ipv6_prefix_list) | resource |

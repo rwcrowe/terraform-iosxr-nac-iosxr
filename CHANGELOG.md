@@ -1,5 +1,7 @@
 ## Unreleased
 
+- `icmp` support added
+- `ipv6` support added
 - `hw_module` support added
 - `track` support added
 - `ipsla` support added
