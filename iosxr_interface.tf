@@ -722,6 +722,7 @@ resource "iosxr_interface_ethernet" "ethernet" {
     #iosxr_ipv4_access_list.ipv4_access_list,
     #iosxr_ipv6_access_list.ipv6_access_list,
     iosxr_flow_monitor_map.flow_monitor_map,
+    iosxr_controller_optics.controller_optics,
     iosxr_monitor_session.monitor_session,
     iosxr_vrf.vrf,
     iosxr_policy_map_qos.policy_map_qos
@@ -973,6 +974,7 @@ resource "iosxr_interface_ethernet" "ethernet_unmanaged" {
     #iosxr_ipv4_access_list.ipv4_access_list,
     #iosxr_ipv6_access_list.ipv6_access_list,
     iosxr_flow_monitor_map.flow_monitor_map,
+    iosxr_controller_optics.controller_optics,
     iosxr_monitor_session.monitor_session,
     iosxr_vrf.vrf,
     iosxr_policy_map_qos.policy_map_qos
@@ -1512,6 +1514,7 @@ resource "iosxr_interface_ethernet_subinterface" "ethernet_subinterface" {
     # Future dependencies - uncomment when resource is created:
     iosxr_interface_ethernet.ethernet,
     iosxr_flow_monitor_map.flow_monitor_map,
+    iosxr_controller_optics.controller_optics,
     iosxr_monitor_session.monitor_session,
     #iosxr_ipv4_access_list.ipv4_access_list,
     #iosxr_ipv6_access_list.ipv6_access_list,

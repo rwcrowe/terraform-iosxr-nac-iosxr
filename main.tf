@@ -144,6 +144,7 @@ resource "iosxr_cli" "cli_0" {
     iosxr_clock.clock,
     iosxr_community_set.community_set,
     iosxr_control_plane.control_plane,
+    iosxr_controller_optics.controller_optics,
     iosxr_domain.domain,
     iosxr_domain_vrf.domain_vrf,
     iosxr_error_disable_recovery.error_disable_recovery,

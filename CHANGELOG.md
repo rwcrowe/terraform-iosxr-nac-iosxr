@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `controllers` support added for `optics`
 - `frequency_synchronization` support added
 - `macsec` support added
 - `icmp` support added
