@@ -164,6 +164,7 @@ resource "iosxr_cli" "cli_0" {
     iosxr_flow_monitor_map.flow_monitor_map,
     iosxr_flow_sampler_map.flow_sampler_map,
     iosxr_fpd.fpd,
+    iosxr_frequency_synchronization.frequency_synchronization,
     iosxr_ftp.ftp,
     iosxr_grpc.grpc,
     iosxr_hostname.hostname,

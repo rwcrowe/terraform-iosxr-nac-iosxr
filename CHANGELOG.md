@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `frequency_synchronization` support added
 - `macsec` support added
 - `icmp` support added
 - `ipv6` support added
