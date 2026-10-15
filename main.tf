@@ -219,6 +219,7 @@ resource "iosxr_cli" "cli_0" {
     iosxr_netconf_yang_agent.netconf_yang_agent,
     iosxr_ntp.ntp,
     iosxr_ospf_area_set.ospf_area_set,
+    iosxr_password6.password6,
     iosxr_pce.pce,
     iosxr_performance_measurement.performance_measurement,
     iosxr_performance_measurement_delay_profile.performance_measurement_delay_profile,

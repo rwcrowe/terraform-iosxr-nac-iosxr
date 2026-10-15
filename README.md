@@ -166,6 +166,7 @@ module "iosxr" {
 | [iosxr_netconf_yang_agent.netconf_yang_agent](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/netconf_yang_agent) | resource |
 | [iosxr_ntp.ntp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ntp) | resource |
 | [iosxr_ospf_area_set.ospf_area_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ospf_area_set) | resource |
+| [iosxr_password6.password6](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/password6) | resource |
 | [iosxr_pce.pce](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/pce) | resource |
 | [iosxr_performance_measurement.performance_measurement](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/performance_measurement) | resource |
 | [iosxr_performance_measurement_delay_profile.performance_measurement_delay_profile](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/performance_measurement_delay_profile) | resource |

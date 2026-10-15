@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `password6_encryption` support added
 - `controllers` support added for `optics`
 - `frequency_synchronization` support added
 - `macsec` support added
