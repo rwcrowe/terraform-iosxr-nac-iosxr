@@ -142,6 +142,7 @@ resource "iosxr_cli" "cli_0" {
     iosxr_class_map_qos.class_map_qos,
     iosxr_class_map_traffic.class_map_traffic,
     iosxr_clock.clock,
+    iosxr_clock_8000.clock_8000,
     iosxr_community_set.community_set,
     iosxr_control_plane.control_plane,
     iosxr_controller_optics.controller_optics,

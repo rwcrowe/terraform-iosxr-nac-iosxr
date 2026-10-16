@@ -87,6 +87,7 @@ module "iosxr" {
 | [iosxr_cli.cli_8](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/cli) | resource |
 | [iosxr_cli.cli_9](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/cli) | resource |
 | [iosxr_clock.clock](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/clock) | resource |
+| [iosxr_clock_8000.clock_8000](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/clock_8000) | resource |
 | [iosxr_community_set.community_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/community_set) | resource |
 | [iosxr_control_plane.control_plane](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/control_plane) | resource |
 | [iosxr_controller_optics.controller_optics](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/controller_optics) | resource |
