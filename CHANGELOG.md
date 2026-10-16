@@ -1,7 +1,7 @@
 ## Unreleased
 
-- `clock` now uses the `iosxr_clock_8000` resource on Cisco 8000 devices and `iosxr_clock` on all other devices. The YAML is the same on every platform
-- Add `device_is_8000` local, derived from the new `hardware` attribute of `iosxr_device_info`, to select Cisco 8000 specific resources. The `iosxr_device_info` data source is now named `device` (was `version`)
+- `clock` now uses the `iosxr_clock_8000` resource on Cisco 8000 devices and `iosxr_clock` on all other devices.
+- Add `device_is_8000` local, derived from the new `hardware` attribute of `iosxr_device_info`, to select Cisco 8000 specific resources.
 - `password6_encryption` support added
 - `controllers` support added for `optics`
 - `frequency_synchronization` support added
