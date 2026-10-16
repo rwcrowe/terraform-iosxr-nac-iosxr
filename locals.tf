@@ -141,9 +141,7 @@ locals {
 
   device_version = { for name, info in data.iosxr_device_info.device : name => info.version }
 
-  # Per-device: true if the device reports hardware-info 8000 (Cisco 8000). Empty hardware -> false.
-  # This is the only place the module decides what counts as a Cisco 8000; the robot keyword
-  # "Is IOSXR 8000" (nac-iosxr, templates/iosxr/test/lib/UtilsLib.py) is the other. Change both together.
+  # Per-device: true if device reports hardware-info 8000 (Cisco 8000)
   device_is_8000 = {
     for name, info in data.iosxr_device_info.device :
     name => can(regex("(?i)^(cisco\\s+)?8000\\b", trimspace(info.hardware)))
