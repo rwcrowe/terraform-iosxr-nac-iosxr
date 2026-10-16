@@ -97,6 +97,7 @@ module "iosxr" {
 | [iosxr_esi_set.esi_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/esi_set) | resource |
 | [iosxr_etag_set.etag_set](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/etag_set) | resource |
 | [iosxr_ethernet_cfm.ethernet_cfm](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ethernet_cfm) | resource |
+| [iosxr_ethernet_sla.ethernet_sla](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ethernet_sla) | resource |
 | [iosxr_evpn.evpn](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/evpn) | resource |
 | [iosxr_evpn_evi.evpn_evi](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/evpn_evi) | resource |
 | [iosxr_evpn_interface.evpn_interface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/evpn_interface) | resource |

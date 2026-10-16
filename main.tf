@@ -152,6 +152,7 @@ resource "iosxr_cli" "cli_0" {
     iosxr_esi_set.esi_set,
     iosxr_etag_set.etag_set,
     iosxr_ethernet_cfm.ethernet_cfm,
+    iosxr_ethernet_sla.ethernet_sla,
     iosxr_evpn.evpn,
     iosxr_evpn_evi.evpn_evi,
     iosxr_evpn_interface.evpn_interface,
