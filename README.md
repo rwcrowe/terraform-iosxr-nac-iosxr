@@ -265,7 +265,7 @@ module "iosxr" {
 | [terraform_data.ethernet_subinterface_flow_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [terraform_data.policy_map_pbr_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [terraform_data.segment_routing_v6_replace](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
-| [iosxr_device_info.version](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/data-sources/device_info) | data source |
+| [iosxr_device_info.device](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/data-sources/device_info) | data source |
 ## Modules
 
 | Name | Source | Version |

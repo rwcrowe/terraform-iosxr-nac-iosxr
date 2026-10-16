@@ -279,7 +279,7 @@ locals {
         profile_tcam_format_og_compr_id_extension                   = (local.device_is_25x[device.name] && !local.device_is_26x[device.name]) ? try(local.device_config[device.name].hw_module.profile_8000.tcam.format.og_compr_id_extension.enable, local.defaults.iosxr.devices.configuration.hw_module.profile_8000.tcam.format.og_compr_id_extension.enable, null) : null
         profile_tcam_format_og_compr_id_extension_ingress           = local.device_is_26x[device.name] ? try(local.device_config[device.name].hw_module.profile_8000.tcam.format.og_compr_id_extension.ingress, local.defaults.iosxr.devices.configuration.hw_module.profile_8000.tcam.format.og_compr_id_extension.ingress, null) : null
       }
-    ] if try(local.device_config[device.name].hw_module.profile_8000, null) != null
+    ] if local.device_is_8000[device.name] && try(local.device_config[device.name].hw_module.profile_8000, null) != null
   ])
 }
 

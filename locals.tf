@@ -130,16 +130,24 @@ locals {
 locals {
   # Per-device: true if device is running 25.4 or later
   device_is_25x = {
-    for name, info in data.iosxr_device_info.version :
+    for name, info in data.iosxr_device_info.device :
     name => info.version == "" ? false : provider::utils::version_compare(info.version, "25.4") >= 0
   }
   # Per-device: true if device is running 26.2 or later
   device_is_26x = {
-    for name, info in data.iosxr_device_info.version :
+    for name, info in data.iosxr_device_info.device :
     name => info.version == "" ? false : provider::utils::version_compare(info.version, "26.2") >= 0
   }
 
-  device_version = { for name, info in data.iosxr_device_info.version : name => info.version }
+  device_version = { for name, info in data.iosxr_device_info.device : name => info.version }
+
+  # Per-device: true if the device reports hardware-info 8000 (Cisco 8000). Empty hardware -> false.
+  # This is the only place the module decides what counts as a Cisco 8000; the robot keyword
+  # "Is IOSXR 8000" (nac-iosxr, templates/iosxr/test/lib/UtilsLib.py) is the other. Change both together.
+  device_is_8000 = {
+    for name, info in data.iosxr_device_info.device :
+    name => can(regex("(?i)^(cisco\\s+)?8000\\b", trimspace(info.hardware)))
+  }
 
   # Device-side enum values by release; each release lists only what changed in it.
   version_keyed_maps = {

@@ -1,5 +1,6 @@
 ## Unreleased
 
+- Add `device_is_8000` local, derived from the new `hardware` attribute of `iosxr_device_info`, to select Cisco 8000 specific resources. The `iosxr_device_info` data source is now named `device` (was `version`)
 - `password6_encryption` support added
 - `controllers` support added for `optics`
 - `frequency_synchronization` support added
