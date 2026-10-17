@@ -102,6 +102,10 @@ resource "iosxr_router_igmp" "router_igmp" {
   missed_packets_member_report           = each.value.missed_packets_member_report
   ssm_map_statics                        = each.value.ssm_map_statics
   interfaces                             = each.value.interfaces
+
+  depends_on = [
+    iosxr_ipv4_access_list.ipv4_access_list
+  ]
 }
 
 ##### Router IGMP VRF #####
@@ -215,6 +219,7 @@ resource "iosxr_router_igmp_vrf" "router_igmp_vrf" {
 
   depends_on = [
     iosxr_vrf.vrf,
+    iosxr_ipv4_access_list.ipv4_access_list,
     iosxr_router_igmp.router_igmp
   ]
 }

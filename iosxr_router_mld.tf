@@ -98,6 +98,10 @@ resource "iosxr_router_mld" "router_mld" {
   missed_packets_member_report           = each.value.missed_packets_member_report
   ssm_map_statics                        = each.value.ssm_map_statics
   interfaces                             = each.value.interfaces
+
+  depends_on = [
+    iosxr_ipv6_access_list.ipv6_access_list
+  ]
 }
 
 ##### Router MLD VRF #####
@@ -209,6 +213,7 @@ resource "iosxr_router_mld_vrf" "router_mld_vrf" {
 
   depends_on = [
     iosxr_vrf.vrf,
+    iosxr_ipv6_access_list.ipv6_access_list,
     iosxr_router_mld.router_mld
   ]
 }
