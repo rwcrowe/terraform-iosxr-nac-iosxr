@@ -229,6 +229,10 @@ module "iosxr" {
 | [iosxr_router_ospf_vrf.router_ospf_vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_ospf_vrf) | resource |
 | [iosxr_router_ospf_vrf_area.router_ospf_vrf_area](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_ospf_vrf_area) | resource |
 | [iosxr_router_ospf_vrf_area_interface.router_ospf_vrf_area_interface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_ospf_vrf_area_interface) | resource |
+| [iosxr_router_pim_ipv4.router_pim_ipv4](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_pim_ipv4) | resource |
+| [iosxr_router_pim_ipv6.router_pim_ipv6](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_pim_ipv6) | resource |
+| [iosxr_router_pim_vrf_ipv4.router_pim_vrf_ipv4](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_pim_vrf_ipv4) | resource |
+| [iosxr_router_pim_vrf_ipv6.router_pim_vrf_ipv6](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_pim_vrf_ipv6) | resource |
 | [iosxr_router_static_ipv4_multicast.router_static_ipv4_multicast](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_static_ipv4_multicast) | resource |
 | [iosxr_router_static_ipv4_unicast.router_static_ipv4_unicast](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_static_ipv4_unicast) | resource |
 | [iosxr_router_static_ipv6_multicast.router_static_ipv6_multicast](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_static_ipv6_multicast) | resource |

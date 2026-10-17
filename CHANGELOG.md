@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `router_pim` support added
 - `router_mld` support added
 - `router_igmp` support added
 - `ethernet_sla` support added
