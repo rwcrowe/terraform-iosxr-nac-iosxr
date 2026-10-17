@@ -273,6 +273,8 @@ resource "iosxr_cli" "cli_0" {
     iosxr_router_isis_address_family.ipv6_unicast,
     iosxr_router_isis_interface.router_isis_interface,
     iosxr_router_isis_interface_address_family.router_isis_interface_address_family,
+    iosxr_router_mld.router_mld,
+    iosxr_router_mld_vrf.router_mld_vrf,
     iosxr_router_ospf.router_ospf,
     iosxr_router_ospf_area.router_ospf_area,
     iosxr_router_ospf_area_interface.router_ospf_area_interface,

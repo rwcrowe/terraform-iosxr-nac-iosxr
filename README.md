@@ -221,6 +221,8 @@ module "iosxr" {
 | [iosxr_router_isis_address_family.ipv6_unicast](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_isis_address_family) | resource |
 | [iosxr_router_isis_interface.router_isis_interface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_isis_interface) | resource |
 | [iosxr_router_isis_interface_address_family.router_isis_interface_address_family](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_isis_interface_address_family) | resource |
+| [iosxr_router_mld.router_mld](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_mld) | resource |
+| [iosxr_router_mld_vrf.router_mld_vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_mld_vrf) | resource |
 | [iosxr_router_ospf.router_ospf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_ospf) | resource |
 | [iosxr_router_ospf_area.router_ospf_area](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_ospf_area) | resource |
 | [iosxr_router_ospf_area_interface.router_ospf_area_interface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/router_ospf_area_interface) | resource |
