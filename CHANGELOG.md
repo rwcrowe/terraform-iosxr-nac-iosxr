@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `rsvp` support added
 - `router_pim` support added
 - `router_mld` support added
 - `router_igmp` support added
