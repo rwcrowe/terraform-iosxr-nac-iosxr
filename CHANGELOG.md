@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `router_igmp` support added
 - `ethernet_sla` support added
 - `ethernet_cfm` support added
 - `clock` now uses the `iosxr_clock_8000` resource on Cisco 8000 devices and `iosxr_clock` on all other devices.

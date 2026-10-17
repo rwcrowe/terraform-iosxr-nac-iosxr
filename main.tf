@@ -264,6 +264,8 @@ resource "iosxr_cli" "cli_0" {
     iosxr_router_hsrp_interface_ipv4_group_v1.router_hsrp_interface_ipv4_group_v1,
     iosxr_router_hsrp_interface_ipv4_group_v2.router_hsrp_interface_ipv4_group_v2,
     iosxr_router_hsrp_interface_ipv6_group_v2.router_hsrp_interface_ipv6_group_v2,
+    iosxr_router_igmp.router_igmp,
+    iosxr_router_igmp_vrf.router_igmp_vrf,
     iosxr_router_isis.router_isis,
     iosxr_router_isis_address_family.ipv4_multicast,
     iosxr_router_isis_address_family.ipv4_unicast,
