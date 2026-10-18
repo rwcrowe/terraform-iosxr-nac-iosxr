@@ -398,7 +398,7 @@ locals {
         device_name   = device.name
         location_name = location
       }
-    ]
+    ] if !local.device_is_8000[device.name]
   ])
 }
 
@@ -407,4 +407,25 @@ resource "iosxr_hw_module_shutdown" "hw_module_shutdown" {
   device        = each.value.device_name
   location_name = each.value.location_name
   shut          = true
+}
+
+##### HW Module Shutdown 8000 #####
+
+locals {
+  hw_module_shutdown_8000_locations = flatten([
+    for device in local.devices : [
+      for location in try(local.device_config[device.name].hw_module.shutdown.locations, []) : {
+        key         = format("%s/%s", device.name, location)
+        device_name = device.name
+        location    = location
+      }
+    ] if local.device_is_8000[device.name]
+  ])
+}
+
+resource "iosxr_hw_module_shutdown_8000" "hw_module_shutdown_8000" {
+  for_each    = { for v in local.hw_module_shutdown_8000_locations : v.key => v }
+  device      = each.value.device_name
+  location    = each.value.location
+  admin_state = "shut"
 }

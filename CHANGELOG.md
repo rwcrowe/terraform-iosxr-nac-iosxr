@@ -1,5 +1,7 @@
 ## Unreleased
 
+- `hw_module_shutdown` sypport added for 8000 series
+- `multicast_routing` support added
 - `rsvp` support added
 - `router_pim` support added
 - `router_mld` support added

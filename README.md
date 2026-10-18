@@ -121,6 +121,7 @@ module "iosxr" {
 | [iosxr_hw_module_profile.hw_module_profile](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hw_module_profile) | resource |
 | [iosxr_hw_module_profile_8000.hw_module_profile_8000](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hw_module_profile_8000) | resource |
 | [iosxr_hw_module_shutdown.hw_module_shutdown](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hw_module_shutdown) | resource |
+| [iosxr_hw_module_shutdown_8000.hw_module_shutdown_8000](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/hw_module_shutdown_8000) | resource |
 | [iosxr_icmp.icmp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/icmp) | resource |
 | [iosxr_interface_bundle_ether.bundle_ether](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bundle_ether) | resource |
 | [iosxr_interface_bundle_ether_subinterface.bundle_ether_subinterface](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/interface_bundle_ether_subinterface) | resource |
@@ -165,6 +166,8 @@ module "iosxr" {
 | [iosxr_mpls_ldp_mldp.mpls_ldp_mldp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mpls_ldp_mldp) | resource |
 | [iosxr_mpls_oam.mpls_oam](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mpls_oam) | resource |
 | [iosxr_mpls_traffic_eng.mpls_traffic_eng](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/mpls_traffic_eng) | resource |
+| [iosxr_multicast_routing.multicast_routing](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/multicast_routing) | resource |
+| [iosxr_multicast_routing_vrf.multicast_routing_vrf](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/multicast_routing_vrf) | resource |
 | [iosxr_netconf_agent_tty.netconf_agent_tty](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/netconf_agent_tty) | resource |
 | [iosxr_netconf_yang_agent.netconf_yang_agent](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/netconf_yang_agent) | resource |
 | [iosxr_ntp.ntp](https://registry.terraform.io/providers/CiscoDevNet/iosxr/0.7.1/docs/resources/ntp) | resource |
